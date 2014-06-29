@@ -8,8 +8,8 @@ exports.search = function (req, res) {
 
     res.send(out.results.map(function (e) {
       var l = e.obj;
-      l.image_url = l.image_url || "dummy.jpg";
-      l.image_thumb_url = l.image_thumb_url || "dummy.jpg";
+      l.image_url = l.image_url || "static/dummy.jpg";
+      l.image_thumb_url = l.image_thumb_url || "static/dummy.jpg";
       return l;
     }));
   });

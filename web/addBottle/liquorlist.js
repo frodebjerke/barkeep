@@ -37,10 +37,11 @@
 
   var addbottle = {
     controller: function (liquorid) {
-      liquorid = liquorid || m.route.param("id")
+      liquorid = liquorid || m.route.param("id");
+      return liquorid
     },
-    view: function () {
-
+    view: function (data) {
+      return m("div", "HELLO!");
     }
   }
 
