@@ -8,9 +8,21 @@ exports.search = function (req, res) {
 
     res.send(out.results.map(function (e) {
       var l = e.obj;
-      l.image_url = l.image_url || "static/dummy.jpg";
-      l.image_thumb_url = l.image_thumb_url || "static/dummy.jpg";
+      imageOrDummy(liquor);
       return l;
     }));
   });
+};
+
+exports.get = function (req, res) {
+  Liquor.findOne({product_no: req.params.productno}, function (err, liquor) {
+    if (err) common.error(err, res);
+    imageOrDummy(liquor);
+    res.send(liquor);
+  });
+};
+
+var imageOrDummy = function (liquor) {
+  liquor.image_url = liquor.image_url || "static/dummy.jpg";
+  liquor.image_thumb_url = liquor.image_thumb_url || "static/dummy.jpg";
 };

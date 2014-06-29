@@ -19,5 +19,7 @@ module.exports = function (app) {
   app.get("/api/drinks", drinkCtrl.list);
   app.post("/api/drink", drinkCtrl.drink);
 
+  app.get("/api/liquor/:productno", liquorCtrl.get);
+
   app.get("/search/liquor/:query", liquorCtrl.search);
 };
