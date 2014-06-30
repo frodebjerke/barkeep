@@ -6,14 +6,22 @@ exports.list = common.list('bottle');
 exports.get = common.get('bottle');
 
 exports.create = function (req, res) {
-  var data = req.body;
+  var body = req.body;
 
-  data.added = new Date();
-  data.content_ml = data.volume_ml;
+  var bottle = {
+    product_id: body.liquor.product_no,
+    name: body.liquor.name,
+    category: body.liquor.primary_category,
+    owner_id: 1,
+    price_nok: body.price,
+    volume_ml: body.liquor.volume_in_milliliters,
+    added: new Date(),
+    sacred: body.sacred
+  };
 
   var query = "insert into bottle set ?";
-  if (validate(data))
-    mysql.query(query, data, function (err, result) {
+  if (validate(bottle))
+    mysql.query(query, bottle, function (err, result) {
       if (err) common.error(err, res);
       common.createOk(req, res, result);
     });

@@ -7,6 +7,7 @@ exports.get = common.get("user");
 
 exports.create = function (req, res) {
   var data = req.body;
+  data.balance = 0;
   var query = "insert into user set ?";
   if (validate(data))
     mysql.query(query, data, function (err, result) {

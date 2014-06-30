@@ -8,7 +8,7 @@ exports.search = function (req, res) {
 
     res.send(out.results.map(function (e) {
       var l = e.obj;
-      imageOrDummy(liquor);
+      imageOrDummy(l);
       return l;
     }));
   });
