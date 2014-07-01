@@ -5,7 +5,9 @@
         m.route("/drink/"+ bottle.id);
       }
     },[
-      m(".liquor-name.col-xs-10", bottle.name)
+      m(".bottle-name.col-xs-2", {src: bottle.image_thumb}),
+      m(".liquor-name.col-xs-5", bottle.name),
+      m(".bottle-owner.col-xs-5", bottle.owner_name)
     ]);
   };
 })(window.bke = window.bke || {});
