@@ -2,12 +2,12 @@ var common = require('./common');
 var mysql = require('../../config/mysql');
 
 exports.list = common.list('bottle');
+exports.search = common.list('bottle');
 
 exports.get = common.get('bottle');
 
 exports.create = function (req, res) {
   var body = req.body;
-  console.log(req.session.passport);
   var bottle = {
     product_id: body.liquor.product_no,
     name: body.liquor.name,
@@ -15,6 +15,8 @@ exports.create = function (req, res) {
     owner_id: req.session.passport.user,
     price_nok: body.price,
     volume_ml: body.liquor.volume_in_milliliters,
+    size_ml: body.liquor.volume_in_milliliters,
+    image_thumb: body.image_thumb_url,
     added: new Date(),
     sacred: body.sacred
   };

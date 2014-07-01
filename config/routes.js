@@ -20,11 +20,14 @@ module.exports = function (app) {
 
   app.get("/api/drinks/:id", ensureAuthenticated, drinkCtrl.get);
   app.get("/api/drinks", ensureAuthenticated, drinkCtrl.list);
-  app.post("/api/drink", ensureAuthenticated, drinkCtrl.drink);
+  app.post("/api/drinks", ensureAuthenticated, drinkCtrl.pourdrink);
 
   app.get("/api/liquor/:productno", ensureAuthenticated, liquorCtrl.get);
 
+  app.get("/search/liquor", ensureAuthenticated, liquorCtrl.list);
   app.get("/search/liquor/:query", ensureAuthenticated, liquorCtrl.search);
+  app.get("/search/bottle", ensureAuthenticated, bottleCtrl.list);
+  app.get("/search/bottle/:query", ensureAuthenticated, bottleCtrl.search);
 
   app.get('/authentication/facebook', passport.authenticate('facebook'));
   app.get('/authentication/facebook/callback', passport.authenticate('facebook',

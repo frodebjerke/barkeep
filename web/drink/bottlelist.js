@@ -1,23 +1,25 @@
 (function (bke) {
-  bke.liquorlist = {
+  bke.bottlelist = {
     controller: function () {
       var query = m.prop("");
-      var liquors = m.prop([]);
+      var bottles = m.prop([]);
 
       var doQuery = function (term) {
         query(term);
         m.request({
           method: "GET",
-          url: "/search/liquor/"+ query()
-        }).then(liquors);
+          url: "/search/bottle/"+query()
+        }).then(bottles);
       };
+
       doQuery("");
+
       return {
-        result: liquors,
+        result: bottles,
         query: query,
         doQuery: doQuery
       };
     },
-    view: bke.views.search(bke.views.liquor)
+    view: bke.views.search(bke.views.bottle)
   };
 })(window.bke = window.bke || {});

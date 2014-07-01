@@ -19,7 +19,7 @@ exports.create = function (req, res) {
 
 exports.authenticate = function (profile, cb) {
   var data = {
-    user_id: profile.id,
+    id: profile.id,
     firstname: profile.name.givenName,
     lastname: profile.name.familyName,
     balance: 0

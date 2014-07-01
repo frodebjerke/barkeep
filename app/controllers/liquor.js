@@ -1,6 +1,14 @@
 var mongoose = require("mongoose");
 var Liquor = mongoose.model('Liquor');
-var common = require("./common")
+var common = require("./common");
+
+exports.list = function (req, res) {
+  Liquor.find({}).limit(100).exec(function (err, result) {
+    if (err) common.error(err, res);
+    result.forEach(imageOrDummy);
+    res.send(result);
+  });
+};
 
 exports.search = function (req, res) {
   Liquor.textSearch(req.params.query, function (err, out) {

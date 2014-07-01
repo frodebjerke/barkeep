@@ -5,16 +5,19 @@ exports.get = common.get("drink");
 
 exports.list = common.list("drink");
 
-exports.drink = function (req, res) {
+exports.pourdrink = function (req, res) {
   var data = req.body;
 
+  if (data.amount - data.bottle.voulme_ml < 0) common.error({error: "Drink size exceeded contents of bottle."});
+
   var drink = {
-    bottle_id: data.bottle_id,
-    user_id: data.user_id,
-    bottle_name: data.bottle_name,
-    user_name: data.user_name,
-    size: data.size,
-    added: new Date()
+    drink_id: -1,
+    user_id: req.session.passport.user,
+    bottle_id: data.bottle.id,
+    bottle_name: data.bottle.name,
+    price: calculatePrice(data.amount, data.bottle),
+    size_ml: data.amount,
+    poured: new Date()
   };
 
   var queryError = function (error) {
@@ -29,7 +32,7 @@ exports.drink = function (req, res) {
     if (err) common.error(err, res);
     mysql.query("insert into drink set ?", drink, function (error, result) {
       queryError(error);
-      mysql.query("update bottle set content_ml = content_ml - "+ data.size +" where id = "+ data.bottle_id, function (error, result2) {
+      mysql.query("update bottle set volume_ml = volume_ml - "+ data.amount +" where id = "+ data.bottle.id, function (error, result2) {
         queryError(error);
         mysql.commit(function (error) {
           queryError(error);
@@ -38,7 +41,9 @@ exports.drink = function (req, res) {
       });
 
     });
-
-
   });
+};
+
+var calculatePrice = function (drinksize, bottle) {
+  return (drinksize / bottle.size_ml) * bottle.price_nok;
 };
