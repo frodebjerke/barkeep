@@ -27,7 +27,7 @@ exports.authenticate = function (profile, cb) {
 
   var query = "insert ignore into user set ?";
   mysql.query(query, data, function (err, result) {
-    cb(null, profile.id);
+    cb(null, {id: data.id, name: data.firstname + " " + data.lastname});
   });
 };
 

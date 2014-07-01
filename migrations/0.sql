@@ -22,6 +22,7 @@ create table bottle (
   added timestamp not null,
   image_thumb varchar(300),
   sacred boolean,
+  owner_name varchar(400),
   primary key (id),
   foreign key (owner_id) references user (id)
 );

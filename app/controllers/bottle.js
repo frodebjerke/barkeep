@@ -12,13 +12,14 @@ exports.create = function (req, res) {
     product_id: body.liquor.product_no,
     name: body.liquor.name,
     category: body.liquor.primary_category,
-    owner_id: req.session.passport.user,
+    owner_id: req.session.passport.user.id,
     price_nok: body.price,
     volume_ml: body.liquor.volume_in_milliliters,
     size_ml: body.liquor.volume_in_milliliters,
     image_thumb: body.image_thumb_url,
     added: new Date(),
-    sacred: body.sacred
+    sacred: body.sacred,
+    owner_name: req.session.passport.user.name
   };
 
   var query = "insert into bottle set ?";
