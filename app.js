@@ -4,7 +4,8 @@ var express = require('express');
 var exphbs = require('express3-handlebars');
 var config = require('./config/config');
 var fs = require('fs');
-var mongoconf = require('./config/mongo')
+var mongoconf = require('./config/mongo');
+var passport = require('passport');
 
 mongoconf.connectToMongo();
 
@@ -25,11 +26,16 @@ app.engine('.hbs', exphbs({extname: ".hbs"}));
 app.set('view engine', '.hbs');
 app.set('views', config.root + '/app/views');
 
+app.use(express.session({ secret: 'keyboard cat' }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 // Configuration
 app.configure( function() {
 });
 
 
+require('./config/authentication');
 require('./config/routes.js')(app);
 
 app.listen(3000);

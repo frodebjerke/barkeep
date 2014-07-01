@@ -3,7 +3,7 @@ use barkeep;
 create table if not exists migrations (migration int, primary key(migration));
 
 create table user (
-  user_id int not null auto_increment,
+  user_id int not null unique,
   firstname varchar(200) not null,
   lastname varchar(200) not null,
   balance int not null,

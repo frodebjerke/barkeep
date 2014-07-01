@@ -17,6 +17,20 @@ exports.create = function (req, res) {
   else common.validationError(res);
 };
 
+exports.authenticate = function (profile, cb) {
+  var data = {
+    user_id: profile.id,
+    firstname: profile.name.givenName,
+    lastname: profile.name.familyName,
+    balance: 0
+  };
+
+  var query = "insert ignore into user set ?";
+  mysql.query(query, data, function (err, result) {
+    cb(null, profile.id);
+  });
+};
+
 var validate = function (data) {
   return !(!data.firstname && !data.lastname);
 };

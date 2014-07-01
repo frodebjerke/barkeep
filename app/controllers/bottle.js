@@ -7,12 +7,12 @@ exports.get = common.get('bottle');
 
 exports.create = function (req, res) {
   var body = req.body;
-
+  console.log(req.session.passport);
   var bottle = {
     product_id: body.liquor.product_no,
     name: body.liquor.name,
     category: body.liquor.primary_category,
-    owner_id: 1,
+    owner_id: req.session.passport.user,
     price_nok: body.price,
     volume_ml: body.liquor.volume_in_milliliters,
     added: new Date(),
