@@ -43,7 +43,8 @@ module.exports = function (grunt) {
 					'public/build/app.js': [
           'web/shared/**/*.js',
           'web/addBottle/**/*.js',
-					'web/drink/**/*.js',
+					'web/pourdrink/**/*.js',
+          'web/drinks/**/*.js',
           'web/app.js',
 					]
 				}

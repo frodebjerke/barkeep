@@ -1,15 +1,15 @@
 (function (bke) {
   var home = {
     controller: function () {
-      return {
 
-      };
+      return new bke.nlastdrinks.controller(2);
     },
     view: function (ctrl) {
       return m("", [
         m("h1", "BArK33p"),
-        m("a", {href: "/addbottle", config: m.route}, "Legg til"),
-        m("a", {href: "/drink", config: m.route}, "Konsumér")
+        m("a.col-xs-12.col-md-6", {href: "/addbottle", config: m.route}, "Legg til"),
+        m("a.col-xs-12.col-md-6", {href: "/drink", config: m.route}, "Konsumér"),
+        bke.nlastdrinks.view(ctrl)
       ]);
     }
   };

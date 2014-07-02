@@ -3,7 +3,7 @@ var common = require('./common');
 
 exports.get = common.get("drink");
 
-exports.list = common.list("drink");
+exports.list = common.list("drink", "order by poured desc");
 
 exports.pourdrink = function (req, res) {
   var data = req.body;
