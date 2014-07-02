@@ -1,8 +1,16 @@
 var mysql = require('../../config/mysql');
+var util = require('util');
 
 exports.list = function (table) {
+  var offset = 0;
+  var limit = 20;
+
   return function (req, res) {
-    mysql.query('select * from '+table, function (err, rows, fields) {
+    limit = req.query.limit || limit;
+
+    mysql.query(util.format(
+      'select * from %s limit %s, %s',table, offset, limit
+      ), function (err, rows, fields) {
       if (err) exports.error(err, res);
       res.send(rows);
     });
