@@ -1,15 +1,14 @@
 (function (bke) {
   bke.pourDrink = {
     controller: function (bottleid) {
-      bottleid = bottleid || m.route.param("id");
+      bottleid = bottleid || m.route.param("bottle");
+      var amount = m.prop(m.route.param("amount") || 40);
       var bottle = m.prop({});
 
       m.request({
         method: "GET",
         url: "/api/bottles/"+bottleid
       }).then(bottle);
-
-      var amount = m.prop(40);
 
       var submit = function () {
         var xhrConfig = function (xhr) {

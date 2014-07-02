@@ -13,12 +13,12 @@ exports.pourdrink = function (req, res) {
   var drink = {
     drink_id: -1,
     user_id: req.session.passport.user.id,
-    bottle_id: data.bottle.id,
+    bottle_id: data.bottle.product_id,
     bottle_name: data.bottle.name,
-    price: calculatePrice(data.amount, data.bottle),
+    price_nok: calculatePrice(data.amount, data.bottle),
     size_ml: data.amount,
     poured: new Date(),
-    user_name: req.session.passport.name
+    user_name: req.session.passport.user.name
   };
 
   var queryError = function (error) {

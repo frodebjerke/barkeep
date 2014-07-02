@@ -19,6 +19,7 @@
     "/addbottle": bke.liquorlist,
     "/addbottle/:id": bke.createBottle,
     "/drink": bke.bottlelist,
-    "/drink/:id": bke.pourDrink
+    "/drink/:bottle": bke.pourDrink,
+    "/drink/:bottle/:amount": bke.pourDrink
   });
 })(window.bke = window.bke || {});
