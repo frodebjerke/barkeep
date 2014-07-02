@@ -16,26 +16,31 @@ exports.create = function (req, res) {
     price_nok: body.price,
     volume_ml: body.liquor.volume_in_milliliters,
     size_ml: body.liquor.volume_in_milliliters,
-    image_thumb: body.image_thumb_url,
+    image_thumb: body.liquor.image_thumb_url,
     added: new Date(),
     sacred: body.sacred,
     owner_name: req.session.passport.user.name
   };
 
-  var query = "insert into bottle set ?";
-  if (validate(bottle))
-    mysql.query(query, bottle, function (err, result) {
-      if (err) common.error(err, res);
-      common.createOk(req, res, result);
+  var queryError = function (error) {
+    if (error) {
+      mysql.rollback(function () {
+        common.error(error, res);
+      });
+    }
+  };
+
+  mysql.beginTransaction(function (err) {
+    if (err) common.error(err, res);
+    mysql.query("insert into bottle set ?", bottle, function (error, result) {
+      queryError(error);
+      mysql.query("update user set balance = balance +"+body.price, function (error, result2) {
+        queryError(error);
+        mysql.commit(function (error) {
+          queryError(error);
+          common.createOk(req, res, result);
+        });
+      });
     });
-  else common.validationError(res);
-};
-
-var validate = function (data) {
-  var valid = true;
-
-  if (!data.name) valid = false;
-  if (!data.owner_id) valid = false;
-
-  return valid;
+  });
 };

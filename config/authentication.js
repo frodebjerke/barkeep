@@ -19,6 +19,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     user.authenticate(profile, function (err, user) {
       if (err) return done(err);
+      console.log("User authenticated: "+user.name);
       done(null, user);
     });
   }
