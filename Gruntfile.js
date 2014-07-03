@@ -45,6 +45,7 @@ module.exports = function (grunt) {
           'web/addBottle/**/*.js',
 					'web/pourdrink/**/*.js',
           'web/drinks/**/*.js',
+          'web/bottles/**/*.js',
           'web/app.js',
 					]
 				}

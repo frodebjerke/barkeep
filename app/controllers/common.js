@@ -4,13 +4,13 @@ var util = require('util');
 exports.list = function (table, moresql) {
   var offset = 0;
   var limit = 20;
+  moresql = moresql || "";
 
   return function (req, res) {
     limit = req.query.limit || limit;
     var query = util.format(
       'select * from %s %s limit %s, %s ',table, moresql, offset, limit
     );
-    console.log(query);
     mysql.query(query, function (err, rows, fields) {
       if (err) exports.error(err, res);
       res.send(rows);
@@ -18,11 +18,15 @@ exports.list = function (table, moresql) {
   };
 };
 
-exports.get = function (table) {
+exports.get = function (table, on) {
+  on = on || "id";
   return function (req, res) {
     var id = req.params.id;
 
-    var query = "select * from "+ table +" where id = " + id;
+    var query = util.format(
+      "select * from %s where %s = %s",
+      table, on, id
+    );
 
     mysql.query(query, function (err, rows, fields) {
       if (err) exports.error(err, res);

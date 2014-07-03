@@ -1,15 +1,18 @@
 (function (bke) {
   var home = {
     controller: function () {
-
-      return new bke.nlastdrinks.controller(2);
+      return {
+        lastdrinks: new bke.nlastdrinks.controller(4),
+        lastbottles: new bke.nlastbottles.controller(4)
+      };
     },
     view: function (ctrl) {
       return m("", [
         m("h1", "BArK33p"),
         m("a.col-xs-12.col-md-6", {href: "/addbottle", config: m.route}, "Legg til"),
-        m("a.col-xs-12.col-md-6", {href: "/drink", config: m.route}, "Konsumér"),
-        bke.nlastdrinks.view(ctrl)
+        m("a.col-xs-12.col-md-6", {href: "/pourdrink", config: m.route}, "Konsumér"),
+        bke.nlastdrinks.view(ctrl.lastdrinks),
+        bke.nlastbottles.view(ctrl.lastbottles)
       ]);
     }
   };
@@ -18,8 +21,8 @@
     "/": home,
     "/addbottle": bke.liquorlist,
     "/addbottle/:id": bke.createBottle,
-    "/drink": bke.bottlelist,
-    "/drink/:bottle": bke.pourDrink,
-    "/drink/:bottle/:amount": bke.pourDrink
+    "/pourdrink": bke.bottlelist,
+    "/pourdrink/:bottle": bke.pourDrink,
+    "/pourdrink/:bottle/:amount": bke.pourDrink
   });
 })(window.bke = window.bke || {});
