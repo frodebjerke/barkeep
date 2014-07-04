@@ -8,7 +8,7 @@
     },
     view: function (ctrl) {
       return m("", [
-        m("h1", "BArK33p"),
+        m("h1", "Barkeep"),
         m("a.col-xs-12.col-md-6", {href: "/addbottle", config: m.route}, "Legg til"),
         m("a.col-xs-12.col-md-6", {href: "/pourdrink", config: m.route}, "Konsumér"),
         bke.nlastdrinks.view(ctrl.lastdrinks),
