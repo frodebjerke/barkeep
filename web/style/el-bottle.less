@@ -1,21 +1,25 @@
 @import 'colors.less';
 @import 'forms.less';
 
-.el-liquor {
+.el-bottle {
   background-image: url('static/dummy.jpg');
   height: inherit;
   background-image: inherit;
   background: center no-repeat;
 
-  .liquor-info {
-    background-color: @liquor;
+  .bottle-info {
+    background-color: @bottle;
     width: inherit;
     height: inherit;
     padding: 1em;
   }
 
-  .liquor-name {
+  .bottle-name {
     .property();
   }
 
+  .bottle-owner {
+    .property();
+    font-style: italic;
+  }
 }

@@ -17,6 +17,7 @@ exports.create = function (req, res) {
     volume_ml: body.liquor.volume_in_milliliters,
     size_ml: body.liquor.volume_in_milliliters,
     image_thumb: body.liquor.image_thumb_url,
+    image: body.liquor.image_url,
     added: new Date(),
     sacred: body.sacred,
     owner_name: req.session.passport.user.name

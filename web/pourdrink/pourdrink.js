@@ -35,16 +35,16 @@
     },
     view: function (ctrl) {
       return m(".el-pourdrink", [
-        bke.views.bottle(ctrl.data()),
+        m(".pourdrink-bottle", bke.views.bottle(ctrl.data())),
         m(".pourdrink-amount", [
           m("label", "How much (ml) ?"),
           m("input", {
             onchange: m.withAttr("value", ctrl.amount),
             value: ctrl.amount()
-          }),
-          m(".pourdrink-submit", [
-            m("button", {onclick: ctrl.submit}, "Submit")
-          ])
+          })
+        ]),
+        m(".pourdrink-submit", [
+          m("button", {onclick: ctrl.submit}, "Submit")
         ])
       ]);
     }

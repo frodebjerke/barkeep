@@ -38,7 +38,7 @@
     },
     view: function (ctrl) {
       return m(".el-addbottle", [
-        bke.views.liquor(ctrl.data()),
+        m(".addbottle-liquor", bke.views.liquor(ctrl.data())),
         m(".addbottle-price",[
           m("label", "Price"),
           m("input", {onchange: m.withAttr("value", ctrl.price), value: ctrl.price()})

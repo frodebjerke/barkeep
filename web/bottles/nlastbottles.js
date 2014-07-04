@@ -17,13 +17,9 @@
         m(".lastbottles", "Siste flasker"),
         bottles().map(function (bottle) {
           return [
-            m(".lastbottles-bottle.col-xs-10", [
+            m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
               bke.views.bottle(bottle),
-            ]),
-            m("a.lastbottles-pour.col-xs-2", {
-                href: "/pourdrink/"+bottle.product_id,
-                config: m.route
-              }, "Pour")
+            ])
           ];
         })
       ]);

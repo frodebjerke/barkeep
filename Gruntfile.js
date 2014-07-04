@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     less: {
       dev: {
         files: {
-          'public/build/style.css': ['web/style/**/*.less', 'bower_components/bootstrap/dist/css/bootstrap.css']
+          'public/build/style.css': ['bower_components/bootstrap/dist/css/bootstrap.css', 'web/style/**/*.less']
         }
       }
     },

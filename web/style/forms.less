@@ -1,0 +1,18 @@
+@import 'colors.less';
+
+.property () {
+  padding: 1em;
+  color: @property;
+  label {
+    color: @propertylabel;
+  }
+  button {
+    padding: 1em 3em;
+    background-color: inherit;
+    border: 0.2em @property solid;
+    &:hover {
+      opacity: 0.7;
+      color: @propertylabel;
+    }
+  }
+}
