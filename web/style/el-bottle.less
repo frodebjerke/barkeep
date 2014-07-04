@@ -6,12 +6,17 @@
   height: inherit;
   background-image: inherit;
   background: center no-repeat;
+  cursor: pointer;
 
   .bottle-info {
     background-color: @bottle;
     width: inherit;
     height: inherit;
     padding: 1em;
+
+    &:hover {
+      background-color: @bottlehover;
+    }
   }
 
   .bottle-name {
