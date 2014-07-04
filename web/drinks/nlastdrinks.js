@@ -21,7 +21,7 @@
               bke.views.drink(drink),
             ]),
             m("a.lastdrinks-copy.col-xs-2", {
-                href: "/pourdrink/"+drink.bottle_id,
+                href: "/pourdrink/"+drink.bottle_id+"/"+drink.size_ml,
                 config: m.route
               }, "Copy")
           ];
