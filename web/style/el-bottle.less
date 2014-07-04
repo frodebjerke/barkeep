@@ -1,5 +1,6 @@
 @import 'colors.less';
 @import 'forms.less';
+@import 'transitions.less';
 
 .el-bottle {
   background-image: url('static/dummy.jpg');
@@ -9,14 +10,11 @@
   cursor: pointer;
 
   .bottle-info {
-    background-color: @bottle;
+    .colorize(@bottle);
     width: inherit;
     height: inherit;
     padding: 1em;
 
-    &:hover {
-      background-color: @bottlehover;
-    }
   }
 
   .bottle-name {

@@ -1,7 +1,8 @@
+@primary: rgba(100, 100, 100, 1);
 
 @liquor: rgba(140,100,100, 0.6);
 @bottle: rgba(100,100,140, 0.6);
-@bottlehover: rgba(100, 100, 140, 0.9);
+@drink: rgba(100, 140,100, 0.6);
 
 @price: rgba(180,100,100, 1);
 @sacred: rgba(180,180,80, 1);
@@ -10,3 +11,11 @@
 
 @property: rgba(240, 240, 240, 1);
 @propertylabel: rgba(60, 60, 60, 1);
+
+.colorize (@color) {
+  transition: background-color 1s ease-in;
+  background-color: @color;
+  &:hover {
+    background-color: darken(@color, 50%);
+  }
+}

@@ -14,14 +14,18 @@
     },
     view: function (bottles) {
       return m(".el-lastbottles", [
-        m(".lastbottles", "Siste flasker"),
-        bottles().map(function (bottle) {
-          return [
-            m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
-              bke.views.bottle(bottle),
-            ])
-          ];
-        })
+        m(".lastbottles-title", "Siste flasker"),
+        m(".lastbottles-bottles", [
+          bottles().map(function (bottle) {
+            return [
+              m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
+                bke.views.bottle(bottle),
+              ])
+            ];
+          })
+        ]),
+        m(".clearfix")
+
       ]);
     }
   };

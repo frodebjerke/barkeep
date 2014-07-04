@@ -1,4 +1,4 @@
-(function (bke) {
+  (function (bke) {
   bke.nlastdrinks = {
     controller: function (n) {
       var drinks = m.prop([]);
@@ -14,17 +14,9 @@
     },
     view: function (drinks) {
       return m(".el-lastdrinks", [
-        m(".lastdrinks", "Siste drinker"),
+        m(".lastdrinks-title", "Siste drinker"),
         drinks().map(function (drink) {
-          return [
-            m(".lastdrinks-drink.col-xs-10", [
-              bke.views.drink(drink),
-            ]),
-            m("a.lastdrinks-copy.col-xs-2", {
-                href: "/pourdrink/"+drink.bottle_id+"/"+drink.size_ml,
-                config: m.route
-              }, "Copy")
-          ];
+          return bke.views.drink(drink);
         })
       ]);
     }

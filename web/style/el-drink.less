@@ -1,0 +1,24 @@
+@import 'colors.less';
+@import 'forms.less';
+@import 'transitions.less';
+
+.el-drink {
+  padding: 1em 0;
+  border-bottom: 0.1em solid @property;
+  .bgTransition();
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: @drink;
+  }
+  .drink-price::after {
+    content: ",-";
+  }
+
+  .drink-size::after {
+    content: "ml";
+  }
+}
