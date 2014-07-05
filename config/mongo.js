@@ -3,7 +3,7 @@ var mongoose	= require('mongoose');
 
 exports.connectToMongo = function() {
 
-	var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/barkeep';
+	var uristring = process.env.MONGO_URI || 'mongodb://localhost/barkeep';
 
 	// Makes connection asynchronously.  Mongoose will queue up database
 	// operations and release them when the connection is complete.
@@ -19,5 +19,5 @@ exports.connectToMongo = function() {
 };
 
 exports.getDbUrl = function(){
-	return  process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/barkeep';
+	return  process.env.MONGO_URI || 'mongodb://localhost/barkeep';
 };
