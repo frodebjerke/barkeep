@@ -50,12 +50,25 @@ module.exports = function (grunt) {
 					]
 				}
 			}
-		}
+		},
+    copy: {
+      build: {
+        files: [
+          {expand: true, src: ['app/**'], dest: 'build/app/'},
+          {expand: true, src: ['config/**'], dest: 'build/config/'},
+          {expand: true, src: ['public/**'], dest: 'build/public/'},
+          {expand: true, src: ['web/**'], dest: 'build/web/'},
+          {expand: true, src: ['app.js', 'Procfile', 'package.json'], dest: 'build/'}
+        ]
+      }
+    }
   });
 
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.registerTask('default', ['uglify:libdev', 'uglify:appdev','less:dev', 'watch']);
+  grunt.registerTask('build', ['uglify:libdev', 'uglify:appdev', 'less:dev', 'copy:build']);
 };
