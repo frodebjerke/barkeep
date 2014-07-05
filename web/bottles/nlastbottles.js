@@ -14,7 +14,13 @@
     },
     view: function (bottles) {
       return m(".el-lastbottles", [
-        m(".lastbottles-title", "Siste flasker"),
+        m(".lastbottles-ctrls", [
+          m(".lastbottles-title", "Siste flasker"),
+          m("a.lastbottles-addbottle", {
+            href: "/addbottle",
+            config: m.route
+          }, "Legg til")
+        ]),
         m(".lastbottles-bottles", [
           bottles().map(function (bottle) {
             return [

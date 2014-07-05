@@ -14,11 +14,27 @@
   &:hover {
     background-color: @drink;
   }
+
+  .drink-bottlename {
+    .title();
+  }
+
+  .drink-price {
+    .property();
+  }
   .drink-price::after {
     content: ",-";
   }
 
+  .drink-size {
+    .property();
+  }
+
   .drink-size::after {
     content: "ml";
+  }
+
+  .drink-copy {
+    .property();
   }
 }

@@ -14,7 +14,13 @@
     },
     view: function (drinks) {
       return m(".el-lastdrinks", [
-        m(".lastdrinks-title", "Siste drinker"),
+        m(".lastdrinks-ctrls", [
+          m(".lastdrinks-title", "Siste drinker"),
+          m("a.lastdrinks-pourdrink", {
+            href: "/pourdrink",
+            config: m.route
+          }, "Konsumér")
+        ]),
         drinks().map(function (drink) {
           return bke.views.drink(drink);
         })
