@@ -13,13 +13,17 @@
       return bottles;
     },
     view: function (bottles) {
+      var addbottle = m("a.lastbottles-addbottle", {
+        href: "/addbottle",
+        config: m.route
+      }, "Legg til");
+
       return m(".el-lastbottles", [
-        m(".lastbottles-ctrls", [
-          m(".lastbottles-title", "Siste flasker"),
-          m("a.lastbottles-addbottle", {
-            href: "/addbottle",
-            config: m.route
-          }, "Legg til")
+        m(".lastbottles-top", [
+          m(".lastbottles-ctrls", [
+            m(".lastbottles-title", "I skapet"),
+            addbottle
+          ])
         ]),
         m(".lastbottles-bottles", [
           bottles().map(function (bottle) {
@@ -28,10 +32,14 @@
                 bke.views.bottle(bottle),
               ])
             ];
-          })
+          }),
+          m(".clearfix")
         ]),
-        m(".clearfix")
-
+        m(".lastbottles-bottom", [
+          m(".lastbottles-ctrls", [
+            addbottle
+          ])
+        ])
       ]);
     }
   };

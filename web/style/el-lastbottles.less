@@ -2,22 +2,31 @@
 @import 'forms.less';
 
 .el-lastbottles {
-
-  background-color: @bottle;
+  .lastbottles-top,
+  .lastbottles-bottom {
+    background: center 70%;
+    background-image: url('../static/cabinet_top_repeat.jpeg');
+    height: 5em;
+  }
 
   .lastbottles-ctrls {
+    background-color: @cabinet;
+    height: inherit;
     .lastbottles-title {
       .title();
       display: inline-block;
     }
     .lastbottles-addbottle {
       .title();
+      display: inline-block;
     }
   }
-
-  .lastbottles-bottle {
-    height: 20em;
-    overflow: hidden;
-    padding: 0;
+  .lastbottles-bottles {
+    background-color: @bottle;
+    .lastbottles-bottle {
+      height: 20em;
+      overflow: hidden;
+      padding: 0;
+    }
   }
 }
