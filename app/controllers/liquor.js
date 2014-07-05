@@ -11,13 +11,11 @@ exports.list = function (req, res) {
 };
 
 exports.search = function (req, res) {
-  Liquor.textSearch(req.params.query, function (err, out) {
+  Liquor.find({name: {$regex: req.params.query, $options: 'i'}}).limit(30).exec(function (err, out) {
     if (err) common.error(err, res);
-
-    res.send(out.results.map(function (e) {
-      var l = e.obj;
-      imageOrDummy(l);
-      return l;
+    res.send(out.map(function (e) {
+      imageOrDummy(e);
+      return e;
     }));
   });
 };

@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var textsearch = require('mongoose-text-search');
 
 var Liquor = mongoose.Schema({
   // product info
@@ -50,16 +49,6 @@ var Liquor = mongoose.Schema({
 
 }, {
   collection: "liquor"
-});
-
-Liquor.plugin(textsearch);
-Liquor.index({
-  name: "text"
-}, {
-  name: "best_match_index",
-  weight: {
-    name: 1
-  }
 });
 
 mongoose.model('Liquor', Liquor);
