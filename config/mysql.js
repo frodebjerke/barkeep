@@ -15,6 +15,6 @@ var connection = mysql.createConnection({
 
 console.log("Mysql connected");
 
-connection.query("use barkeep;");
+connection.query("use "+db+";");
 
 module.exports = connection;

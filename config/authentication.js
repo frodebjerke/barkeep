@@ -11,10 +11,11 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+var url = process.env.BARKEEP_URL || 'http://localhost:3000';
 passport.use(new FacebookStrategy({
-    clientID: 230569583819743,
-    clientSecret: "b9e54ed47235faff4a47783c0b675edb",
-    callbackURL: "http://localhost:3000/authentication/facebook/callback"
+    clientID: process.env.FB_CID || 231921907017844,
+    clientSecret: process.env.FB_SECRET,
+    callbackURL: url+"/authentication/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     user.authenticate(profile, function (err, user) {

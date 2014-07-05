@@ -57,7 +57,6 @@ module.exports = function (grunt) {
           {expand: true, src: ['app/**'], dest: 'build/'},
           {expand: true, src: ['config/**'], dest: 'build/'},
           {expand: true, src: ['public/**'], dest: 'build/'},
-          {expand: true, src: ['web/**'], dest: 'build/'},
           {expand: true, src: ['app.js', 'Procfile', 'package.json'], dest: 'build/'}
         ]
       }

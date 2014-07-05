@@ -38,4 +38,4 @@ app.configure( function() {
 require('./config/authentication');
 require('./config/routes.js')(app);
 
-app.listen(3000);
+app.listen(process.env.NODE_ENV || process.env.PORT || 3000);
