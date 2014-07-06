@@ -1,0 +1,28 @@
+@import 'colors.less';
+
+.el-menu {
+  .menu-icon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: @propertylabel;
+    border: 1px solid @primary;
+    border-radius: 1000px;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: @secondary;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(@secondary, 10%);
+    }
+
+    &.active {
+      color: @property;
+      background-color: darken(@secondary, 10%);
+    }
+  }
+}
