@@ -2,7 +2,7 @@
   bke.views.bottle = function (bottle) {
     return m(".el-bottle", {
       onclick: function () {
-        m.route(/pourdrink/+bottle.product_id);
+        m.route('/pourdrink/'+bottle.id);
       },
       style: "background-image:url('"+ bottle.image +"');"
     }, m(".bottle-info", [

@@ -21,7 +21,7 @@
       return m(".el-lastbottles", [
         m(".lastbottles-top", [
           m(".lastbottles-ctrls", [
-            m(".lastbottles-title", "I skapet"),
+            m(".lastbottles-title", "In the cabinet"),
             addbottle
           ])
         ]),

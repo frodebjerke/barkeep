@@ -4,7 +4,7 @@ var mysql = require('../../config/mysql');
 exports.list = common.list('bottle', 'where volume_ml > 0 order by added desc');
 exports.search = common.list('bottle');
 
-exports.get = common.get('bottle', "product_id");
+exports.get = common.get('bottle', "id");
 
 exports.create = function (req, res) {
   var body = req.body;
