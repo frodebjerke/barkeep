@@ -3,38 +3,64 @@
 @import 'transitions.less';
 
 .el-drink {
-  padding: 1em 0;
-  border-bottom: 0.1em solid @property;
-  .bgTransition();
+  white-space: nowrap;
+  text-align: center;
+  &:nth-child(even) {
+    background-color: lighten(@secondary, 10%);
+  }
 
   &:last-child {
-    border-bottom: none;
+    border-bottom: 0.5em solid @secondary;
   }
 
-  &:hover {
-    background-color: @drink;
+  .partOfMsg(@color) {
+    display: inline-block;
+    color: @color;
+    white-space: nowrap;
   }
 
-  .drink-bottlename {
-    .title();
+  .drink-time {
+    .partOfMsg(@drink);
+    font-size: 0.8em;
+    width: 4em;
+    // &::after {
+    //   color: @propertylabel;
+    //   content: " ago";
+    // }
   }
 
-  .drink-price {
-    .property();
-  }
-  .drink-price::after {
-    content: ",-";
+  .drink-user {
+    .partOfMsg(@user);
+    &::before {
+      content: "\00a0";
+    }
+    &::after {
+      color: @propertylabel;
+      content: " poured";
+    }
   }
 
   .drink-size {
-    .property();
+    .partOfMsg(@amount);
+
+    &::before {
+      content: "\00a0";
+    }
+    &::after {
+      content: "ml";
+    }
   }
 
-  .drink-size::after {
-    content: "ml";
-  }
+  .drink-bottle {
+    .partOfMsg(@bottle);
 
-  .drink-copy {
-    .property();
+    &::before {
+      color: @propertylabel;
+      content: "\00a0 from ";
+    }
+    &::after {
+      color: @propertylabel;
+      content: ".";
+    }
   }
 }

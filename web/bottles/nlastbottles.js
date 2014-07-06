@@ -13,18 +13,8 @@
       return bottles;
     },
     view: function (bottles) {
-      var addbottle = m("a.lastbottles-addbottle", {
-        href: "/addbottle",
-        config: m.route
-      }, "Legg til");
 
       return m(".el-lastbottles", [
-        m(".lastbottles-top", [
-          m(".lastbottles-ctrls", [
-            m(".lastbottles-title", "In the cabinet"),
-            addbottle
-          ])
-        ]),
         m(".lastbottles-bottles", [
           bottles().map(function (bottle) {
             return [
@@ -35,11 +25,11 @@
           }),
           m(".clearfix")
         ]),
-        m(".lastbottles-bottom", [
-          m(".lastbottles-ctrls", [
-            addbottle
-          ])
-        ])
+        // m(".lastbottles-bottom", [
+        //   m(".lastbottles-ctrls", [
+        //     addbottle
+        //   ])
+        // ])
       ]);
     }
   };
