@@ -23,23 +23,29 @@ exports.create = function (req, res) {
     owner_name: req.session.passport.user.name
   };
 
-  var queryError = function (error) {
-    if (error) {
-      mysql.rollback(function () {
-        common.error(error, res);
-      });
-    }
-  };
 
-  mysql.beginTransaction(function (err) {
+
+  mysql.getConnection(function (err, connection) {
     if (err) common.error(err, res);
-    mysql.query("insert into bottle set ?", bottle, function (error, result) {
-      queryError(error);
-      mysql.query("update user set balance = balance +"+body.price, function (error, result2) {
+    var queryError = function (error) {
+      if (error) {
+        connection.rollback(function () {
+          common.error(error, res);
+          connection.release();
+        });
+      }
+    };
+    connection.beginTransaction(function (err) {
+      if (err) common.error(err, res);
+      connection.query("insert into bottle set ?", bottle, function (error, result) {
         queryError(error);
-        mysql.commit(function (error) {
+        connection.query("update user set balance = balance +"+body.price, function (error, result2) {
           queryError(error);
-          common.createOk(req, res, result);
+          connection.commit(function (error) {
+            queryError(error);
+            common.createOk(req, res, result);
+            connection.release();
+          });
         });
       });
     });

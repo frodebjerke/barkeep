@@ -15,9 +15,12 @@ exports.create = function (req, res) {
   data.balance = 0;
   var query = "insert into user set ?";
   if (validate(data))
-    mysql.query(query, data, function (err, result) {
-      if (err) common.error(err, res);
-      common.createOk(req, res,result);
+    mysql.getConnection(function (err, connection) {
+      connection.query(query, data, function (err, result) {
+        if (err) common.error(err, res);
+        common.createOk(req, res,result);
+        connection.release();
+      });
     });
   else common.validationError(res);
 };

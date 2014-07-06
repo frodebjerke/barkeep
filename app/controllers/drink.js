@@ -21,26 +21,30 @@ exports.pourdrink = function (req, res) {
     user_name: req.session.passport.user.name
   };
 
-  var queryError = function (error) {
-    if (error) {
-      mysql.rollback(function () {
-        common.error(error, res);
-      });
-    }
-  };
-
-  mysql.beginTransaction(function (err) {
+  mysql.getConnection(function (err, connection) {
     if (err) common.error(err, res);
-    mysql.query("insert into drink set ?", drink, function (error, result) {
-      queryError(error);
-      mysql.query("update bottle set volume_ml = volume_ml - "+ data.amount +" where id = "+ data.bottle.id, function (error, result2) {
-        queryError(error);
-        mysql.commit(function (error) {
-          queryError(error);
-          common.createOk(req, res, result);
+    var queryError = function (error) {
+      if (error) {
+        connection.rollback(function () {
+          common.error(error, res);
+          connection.release();
         });
-      });
+      }
+    };
+    connection.beginTransaction(function (err) {
+      if (err) common.error(err, res);
+      connection.query("insert into drink set ?", drink, function (error, result) {
+        queryError(error);
+        connection.query("update bottle set volume_ml = volume_ml - "+ data.amount +" where id = "+ data.bottle.id, function (error, result2) {
+          queryError(error);
+          connection.commit(function (error) {
+            queryError(error);
+            common.createOk(req, res, result);
+            connection.release();
+          });
+        });
 
+      });
     });
   });
 };

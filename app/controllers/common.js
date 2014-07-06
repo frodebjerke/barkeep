@@ -11,9 +11,13 @@ exports.list = function (table, moresql) {
     var query = util.format(
       'select * from %s %s limit %s, %s ',table, moresql, offset, limit
     );
-    mysql.query(query, function (err, rows, fields) {
+    mysql.getConnection(function (err, connection) {
       if (err) exports.error(err, res);
-      res.send(rows);
+      connection.query(query, function (err, rows, fields) {
+        if (err) exports.error(err, res);
+        res.send(rows);
+        connection.release();
+      });
     });
   };
 };
@@ -27,11 +31,14 @@ exports.get = function (table, on) {
       "select * from %s where %s = %s",
       table, on, id
     );
-
-    mysql.query(query, function (err, rows, fields) {
+    mysql.getConnection(function (err, connection) {
       if (err) exports.error(err, res);
-      if (rows.length < 1) res.send({error: "Not found"}, 400);
-      res.send(rows[0]);
+      connection.query(query, function (err, rows, fields) {
+        if (err) exports.error(err, res);
+        if (rows.length < 1) res.send({error: "Not found"}, 400);
+        res.send(rows[0]);
+        connection.release();
+      });
     });
   };
 };
