@@ -16,8 +16,8 @@
             config: m.route
           }, "New bottle")
         ]),
-        bke.personstats.view(ctrl.personstats),
         bke.nlastdrinks.view(ctrl.lastdrinks),
+        bke.personstats.view(ctrl.personstats),
         bke.nlastbottles.view(ctrl.lastbottles),
       ]);
     }

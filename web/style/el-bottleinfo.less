@@ -1,0 +1,35 @@
+@import 'colors.less';
+
+.el-bottleinfo {
+  height: inherit;
+  padding: 1em;
+
+  .bottleinfo-title {
+    text-transform: uppercase;
+    color: @property;
+  }
+
+  .bottleinfo-label {
+    text-align: right;
+    font-style: italic;
+  }
+
+  .bottleinfo-stat {
+    .bottleinfo-value {
+      width: 30%;
+      color: @property;
+      display: inline-block;
+      text-align: right;
+      vertical-align: top;
+      text-transform: uppercase;
+    }
+
+    .bottleinfo-key {
+      width: 70%;
+      color: @property;
+      display: inline-block;
+      padding-left: 0.5em;
+      text-transform: uppercase;
+    }
+  }
+}
