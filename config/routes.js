@@ -17,6 +17,7 @@ module.exports = function (app) {
   app.get("/api/users", ensureAuthenticated, userCtrl.list);
   app.get("/api/users/:id", ensureAuthenticated, userCtrl.get);
   app.post("/api/users", ensureAuthenticated, userCtrl.create);
+  app.get("/api/me", ensureAuthenticated, userCtrl.me);
 
   app.get("/api/drinks/:id", ensureAuthenticated, drinkCtrl.get);
   app.get("/api/drinks", ensureAuthenticated, drinkCtrl.list);

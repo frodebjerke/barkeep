@@ -2,6 +2,7 @@
   var home = {
     controller: function () {
       return {
+        personstats: new bke.personstats.controller(),
         lastdrinks: new bke.nlastdrinks.controller(4),
         lastbottles: new bke.nlastbottles.controller(18)
       };
@@ -15,6 +16,7 @@
             config: m.route
           }, "New bottle")
         ]),
+        bke.personstats.view(ctrl.personstats),
         bke.nlastdrinks.view(ctrl.lastdrinks),
         bke.nlastbottles.view(ctrl.lastbottles),
       ]);

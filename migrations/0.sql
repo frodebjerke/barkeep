@@ -3,7 +3,7 @@ use barkeep;
 create table if not exists migrations (migration int, primary key(migration));
 
 create table user (
-  id int not null unique,
+  id varchar(64) not null unique,
   firstname varchar(200) not null,
   lastname varchar(200) not null,
   balance int not null,
@@ -15,7 +15,7 @@ create table bottle (
   product_id int not null,
   name varchar(200) not null,
   category varchar(200) not null,
-  owner_id int not null,
+  owner_id varchar(64) not null,
   price_nok int,
   volume_ml int,
   size_ml int,
@@ -32,7 +32,7 @@ create table bottle (
 create table drink (
   id int not null auto_increment,
   drink_id int not null,
-  user_id int not null,
+  user_id varchar(64) not null,
   bottle_id int not null,
   price_nok int not null,
   size_ml int not null,

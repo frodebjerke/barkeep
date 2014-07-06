@@ -5,6 +5,11 @@ exports.list = common.list("user");
 
 exports.get = common.get("user");
 
+exports.me = function (req, res) {
+  req.params.id = req.session.passport.user.id;
+  common.get("user")(req, res);
+};
+
 exports.create = function (req, res) {
   var data = req.body;
   data.balance = 0;

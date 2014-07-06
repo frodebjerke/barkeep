@@ -1,6 +1,28 @@
+@import 'forms.less';
+@import 'colors.less';
+
 .el-person {
-  display: inline-block;
-  img {
-    height: 4em;
+  .module(@user);
+  .person-balance {
+    margin: 0;
+    padding: 0;
+    color: @property;
+    text-transform: uppercase;
+    // font-size: 3em;
+    &.positive {
+      color: @positive;
+    }
+    &.negative {
+      color: @negative;
+    }
+    &::before {
+      color: @propertylabel;
+      content: "Your Balance \00a0";
+    }
+    &::after {
+      font-size: 0.5em;
+      color: @propertylabel;
+      content: ",-";
+    }
   }
 }
