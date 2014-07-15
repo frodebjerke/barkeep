@@ -4,8 +4,7 @@
       return {
         personstats: new bke.personstats.controller(),
         lastdrinks: new bke.nlastdrinks.controller(4),
-        lastbottles: new bke.nlastbottles.controller(18),
-        menu: new bke.menu.controller()
+        lastbottles: new bke.nlastbottles.controller(18)
       };
     },
     view: function (ctrl) {
@@ -15,8 +14,7 @@
           m("a.top-addbottle", {
             href: "/addbottle",
             config: m.route
-          }, "New bottle"),
-          bke.menu.view(ctrl.menu)
+          }, "New bottle")
         ]),
         bke.nlastdrinks.view(ctrl.lastdrinks),
         bke.personstats.view(ctrl.personstats),
@@ -25,6 +23,9 @@
     }
   };
 
+  m.startComputation();
+
+  m.module(document.getElementById("menu-region"), bke.menu);
   m.route(document.getElementById("barkeep-region"), "/", {
     "/": home,
     "/addbottle": bke.liquorlist,
@@ -33,4 +34,6 @@
     "/pourdrink/:bottle": bke.pourDrink,
     "/pourdrink/:bottle/:amount": bke.pourDrink
   });
+  m.endComputation();
+
 })(window.bke = window.bke || {});

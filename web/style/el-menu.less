@@ -1,7 +1,9 @@
 @import 'colors.less';
+@import 'transitions.less';
 
 .el-menu {
   .menu-icon {
+    z-index: 2;
     position: fixed;
     top: 0;
     right: 0;
@@ -19,10 +21,37 @@
     &:hover {
       background-color: darken(@secondary, 10%);
     }
+  }
 
-    &.active {
+  .menu-list {
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    // position: fixed;
+    // top: 0;
+    // z-index: 1;
+    background-color: @primary;
+    width: 100%;
+
+    .menu-item {
+      a {
+        link-style: none;
+        color: @lightfont;
+        padding: 1em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &.active {
+    .menu-icon {
       color: @lightfont;
       background-color: darken(@secondary, 10%);
+    }
+    .menu-list {
+      transition: 1s ease-in-out;
+      visibility: visible;
+      max-height: 40em; // trivially large
     }
   }
 }

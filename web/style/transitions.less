@@ -1,3 +1,17 @@
 .bgTransition () {
   transition: background-color 0.7s ease-in-out;
 }
+
+.slideTopInAnim () {
+  @-webkit-keyframes slide {
+      100% { height: auto; }
+  }
+
+  @keyframes slide {
+      100% { height: auto; }
+  }
+
+
+  -webkit-animation: slide 0.5s forwards;
+  animation: slide 0.5s forwards;
+}
