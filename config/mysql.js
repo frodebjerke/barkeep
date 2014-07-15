@@ -10,6 +10,7 @@ var conf = process.env.CLEARDB_DATABASE_URL || {
   connectionLimit : 10,
   host: host,
   user: user,
+  database: db,
   password: pw
 };
 
