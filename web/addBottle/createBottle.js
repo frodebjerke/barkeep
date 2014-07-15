@@ -41,7 +41,11 @@
         m(".addbottle-liquor", bke.views.liquor(ctrl.data())),
         m(".addbottle-price",[
           m("label", "Price"),
-          m("input", {onchange: m.withAttr("value", ctrl.price), value: ctrl.price()})
+          m("input", {
+            type: "number",
+            onchange: m.withAttr("value", ctrl.price),
+            value: ctrl.price()
+          })
         ]),
         m(".addbottle-sacred", [
           m("label", "Is this bottle totally sacred to you?"),

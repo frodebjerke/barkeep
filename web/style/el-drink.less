@@ -23,10 +23,6 @@
     .partOfMsg(@drink);
     font-size: 0.8em;
     width: 4em;
-    // &::after {
-    //   color: @propertylabel;
-    //   content: " ago";
-    // }
   }
 
   .drink-user {
@@ -35,7 +31,7 @@
       content: "\00a0";
     }
     &::after {
-      color: @propertylabel;
+      color: @darkfont;
       content: " poured";
     }
   }
@@ -55,11 +51,11 @@
     .partOfMsg(@bottle);
 
     &::before {
-      color: @propertylabel;
+      color: @darkfont;
       content: "\00a0 from ";
     }
     &::after {
-      color: @propertylabel;
+      color: @darkfont;
       content: ".";
     }
   }

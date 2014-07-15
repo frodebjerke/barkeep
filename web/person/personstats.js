@@ -19,7 +19,7 @@
       else if (balance < 0) posneg = "negative";
 
       return m(".el-person", [
-        m("h2.person-balance", {
+        m("h3.person-balance", {
           class: posneg
         }, ctrl.user().balance)
       ]);

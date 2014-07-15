@@ -1,10 +1,21 @@
 (function (bke) {
+
   bke.views.search = function (itemview) {
     return function (ctrl) {
+      var last_req;
+      var debounce = function (arg) {
+        if (!last_req || new Date().getTime() - last_req > 200) {
+          ctrl.doQuery(arg);
+          last_req = new Date().getTime();
+        }
+      };
       return m(".el-search", [
         m(".search-bar.row", [
           m("input", {
+            autofocus: "autofocus",
+            placeholder: "Search ...",
             onchange: m.withAttr("value", ctrl.doQuery),
+            onkeyup: m.withAttr("value", debounce),
             value: ctrl.query()
           })
         ]),
@@ -13,5 +24,8 @@
         }))
       ]);
     };
+
+
+
   };
 })(window.bke = window.bke || {});

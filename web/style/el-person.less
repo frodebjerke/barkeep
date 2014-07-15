@@ -6,7 +6,7 @@
   .person-balance {
     margin: 0;
     padding: 0;
-    color: @property;
+    color: @lightfont;
     text-transform: uppercase;
     // font-size: 3em;
     &.positive {
@@ -16,12 +16,12 @@
       color: @negative;
     }
     &::before {
-      color: @propertylabel;
+      color: @darkfont;
       content: "Your Balance \00a0";
     }
     &::after {
       font-size: 0.5em;
-      color: @propertylabel;
+      color: @darkfont;
       content: ",-";
     }
   }

@@ -1,30 +1,41 @@
 @import 'colors.less';
 
-.property () {
+.property(@color) {
+  background-color: @color;
   padding: 1em;
-  color: @property;
+  color: @lightfont;
   label {
-    color: @propertylabel;
+    color: @darkfont;
+  }
+  input {
+    padding: 1em 1em;
+    margin-left: 1em;
+    background-color: @color;
+    color: @darkfont;
+    border: 0.2em darken(@color, 10%) solid;
+    &:hover {
+      background-color: lighten(@color, 10%);
+    }
   }
   button {
     padding: 1em 3em;
     background-color: inherit;
-    border: 0.2em @property solid;
+    border: 0.2em @lightfont solid;
     &:hover {
-      opacity: 0.7;
-      color: @propertylabel;
+      background-color: lighten(@color, 10%);
+      color: @darkfont;
     }
   }
 }
 
 .title () {
-  color: @property;
+  color: @lightfont;
   text-transform: uppercase;
   padding: 0.2em;
 }
 
 .nav () {
-  color: @propertylabel;
+  color: @darkfont;
   text-transform: uppercase;
   padding: 0.2em;
 }

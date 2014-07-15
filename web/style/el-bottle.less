@@ -18,11 +18,11 @@
   }
 
   .bottle-name {
-    .property();
+    color: @lightfont;
   }
 
   .bottle-owner {
-    .property();
+    color: @lightfont;
     font-style: italic;
   }
 
@@ -34,7 +34,7 @@
     right: 1em;
     background-color: @liquor;
     .bottle-amount {
-      color: @property;
+      color: @lightfont;
       position: absolute;
       bottom: 0;
       background-color: @cabinet;
@@ -43,7 +43,7 @@
     }
     .bottle-amount::after {
       content: "L";
-      color: @propertylabel;
+      color: @darkfont;
       font-style: italic;
     }
   }
