@@ -9,13 +9,6 @@
     },
     view: function (ctrl) {
       return m("", [
-        m(".el-top", [
-          m(".top-title", "Barkeep"),
-          m("a.top-addbottle", {
-            href: "/addbottle",
-            config: m.route
-          }, "New bottle")
-        ]),
         bke.nlastdrinks.view(ctrl.lastdrinks),
         bke.personstats.view(ctrl.personstats),
         bke.nlastbottles.view(ctrl.lastbottles),
