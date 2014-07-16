@@ -4,10 +4,9 @@
 
 .el-drink {
   display: block;
-  white-space: nowrap;
+  // white-space: nowrap;
   overflow: hidden;
-  line-height: 300%;
-  padding-left: 0.5em;
+  padding: 0.5em;
   cursor: pointer;
   .bgTransition();
 
@@ -20,22 +19,16 @@
   }
 
   .partOfMsg(@color) {
-    display: inline-block;
     color: @color;
-    white-space: nowrap;
   }
 
   .drink-time {
     .partOfMsg(@drink);
     font-size: 0.8em;
-    width: 4em;
   }
 
   .drink-user {
     .partOfMsg(@user);
-    &::before {
-      content: "\00a0";
-    }
     &::after {
       color: @darkfont;
       content: " poured";

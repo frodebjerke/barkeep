@@ -3,7 +3,7 @@
     controller: function () {
       return {
         personstats: new bke.personstats.controller(),
-        lastdrinks: new bke.nlastdrinks.controller(4),
+        lastdrinks: new bke.nlastdrinks.controller(3),
         lastbottles: new bke.nlastbottles.controller(18)
       };
     },

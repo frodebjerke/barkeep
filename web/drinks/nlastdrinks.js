@@ -14,7 +14,7 @@
     },
     view: function (drinks) {
       return m(".el-lastdrinks", [
-        m(".lastdrinks-title", "Most recent drinks poured ..."),
+        m(".lastdrinks-title", "Most recently poured drinks ..."),
         drinks().map(function (drink) {
           return bke.views.drink(drink);
         })
