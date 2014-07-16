@@ -29,7 +29,10 @@
 
   bke.views.drink = function (drink) {
     var poured = getDateString(drink.poured);
-    return m(".el-drink", [
+    return m("a.el-drink", {
+      href: "/pourdrink/"+drink.bottle_id+"/"+drink.size_ml,
+      config: m.route
+    },[
       m(".drink-time", poured),
       m(".drink-user", drink.user_name),
       m(".drink-size", drink.size_ml),

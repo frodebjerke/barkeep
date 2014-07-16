@@ -3,8 +3,14 @@
 @import 'transitions.less';
 
 .el-drink {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
+  line-height: 300%;
+  padding-left: 0.5em;
+  cursor: pointer;
+  .bgTransition();
+
   &:nth-child(even) {
     background-color: lighten(@secondary, 10%);
   }
