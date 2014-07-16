@@ -25,17 +25,17 @@
     view: function (ctrl) {
       return m(".el-lastbottles", [
         m(".lastbottles-bottles", [
-          m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
+          m(".lastbottles-bottle.col-xs-12.col-sm-4.col-md-3.col-lg-2", [
             bottleinfo()
           ]),
           ctrl.bottles().map(function (bottle) {
             return [
-              m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
+              m(".lastbottles-bottle.col-xs-12.col-sm-4.col-md-3.col-lg-2", [
                 bke.views.bottle(bottle)
               ])
             ];
           }),
-          m(".lastbottles-bottle.col-xs-6.col-sm-4.col-md-3.col-lg-2", [
+          m(".lastbottles-bottle.col-xs-12.col-sm-4.col-md-3.col-lg-2", [
             bottlestats(ctrl.stats())
           ]),
           m(".clearfix")
