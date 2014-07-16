@@ -26,19 +26,26 @@
   .menu-list {
     visibility: hidden;
     max-height: 0;
+    transition: 1s ease-out;
     overflow: hidden;
-    // position: fixed;
-    // top: 0;
-    // z-index: 1;
     background-color: @primary;
     width: 100%;
+    border-bottom: 0.5em darken(@primary, 10%) solid;
 
     .menu-item {
-      a {
-        link-style: none;
-        color: @lightfont;
-        padding: 1em;
-        text-transform: uppercase;
+      display: block;
+      width: 100%;
+      link-style: none;
+      color: @lightfont;
+      padding: 1em;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:nth-child(even) {
+        background-color: lighten(@primary, 10%);
+      }
+      &:hover {
+        background-color: darken(@primary, 10%);
       }
     }
   }

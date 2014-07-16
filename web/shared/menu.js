@@ -28,17 +28,15 @@
         m("a.menu-icon", {
           onclick: ctrl.toggleMenu
         },"m"),
-        m(".menu-list",
+        m(".menu-list.col-xs-12",
           ctrl.links().map(this.menuItem)
         )
       ]);
     },
     menuItem: function (item) {
-      return m(".menu-item", [
-        m("a", {
+      return m("a.menu-item", {
           href: '/?'+ item.url()
-        }, item.name())
-      ]);
+        }, item.name());
     }
   };
 })(window.bke = window.bke || {});

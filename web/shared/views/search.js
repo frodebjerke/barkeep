@@ -10,14 +10,15 @@
         }
       };
       return m(".el-search", [
-        m(".search-bar.row", [
-          m("input", {
+        m(".search-bar", [
+          m("input.col-xs-11.col-md-8", {
             autofocus: "autofocus",
             placeholder: "Search ...",
             onchange: m.withAttr("value", ctrl.doQuery),
             onkeyup: m.withAttr("value", debounce),
             value: ctrl.query()
-          })
+          }),
+          m(".clearfix")
         ]),
         m(".search-results", ctrl.result().map(function (res) {
           return m(".search-result.col-xs-6.col-sm-4.col-md-3.col-lg-2", itemview(res));
