@@ -4,6 +4,23 @@
   background-color: @color;
   padding: 1em;
   color: @lightfont;
+
+  ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: scroll;
+    li {
+      overflow: hidden;
+      word-wrap: break-word;
+      display: inline-block;
+      width: 5em;
+      height: 5em;
+    }
+  }
   label {
     color: @darkfont;
   }

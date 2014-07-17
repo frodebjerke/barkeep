@@ -1,5 +1,6 @@
 @import 'forms.less';
 @import 'colors.less';
+@import 'transitions.less';
 
 .el-addbottle {
   .addbottle-liquor {
@@ -8,6 +9,23 @@
 
   .addbottle-price {
     .property(@price);
+  }
+
+  .addbottle-pickowner {
+    .property(@user);
+    position: relative;
+    .addbottle-owner {
+      position: absolute;
+      background-color: darken(@user, 10%);
+    }
+    .addbottle-user {
+      background-color: lighten(@user, 10%);
+      cursor: pointer;
+      .bgTransition();
+      &:hover {
+        background-color: darken(@user, 10%);
+      }
+    }
   }
 
   .addbottle-sacred {

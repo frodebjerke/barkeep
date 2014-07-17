@@ -2,36 +2,31 @@
   bke.createBottle = {
     controller: function (liquorid) {
       liquorid = liquorid || m.route.param("id");
-      var liquor = m.prop({});
 
-      m.request({
-        method: "GET",
-        url: "/api/liquor/"+ liquorid
-      }).then(liquor);
-
+      var liquor = fetchLiquor(liquorid);
       var price = m.prop(300);
       var sacred = m.prop(false);
+      var owner = fetchMe();
+      var users = fetchUsers();
 
       var submit = function () {
-        var xhrConfig = function(xhr) {
-          xhr.setRequestHeader("Content-Type", "application/json");
+        var data = {
+          liquor: liquor(),
+          owner: owner(),
+          price: price(),
+          sacred: sacred()
         };
-        m.request({
-          method: "POST",
-          url: "/api/bottles",
-          config: xhrConfig,
-          data: {
-            liquor: liquor(),
-            price: price(),
-            sacred: sacred()
-          }
-        }).then(function () {
+
+        postBottle(data).then(function () {
           m.route("/");
         });
       };
+
       return {
         data: liquor,
         price: price,
+        owner: owner,
+        users: users,
         sacred: sacred,
         submit: submit
       };
@@ -39,22 +34,101 @@
     view: function (ctrl) {
       return m(".el-addbottle", [
         m(".addbottle-liquor", bke.views.liquor(ctrl.data())),
-        m(".addbottle-price",[
-          m("label", "Price"),
-          m("input", {
-            type: "number",
-            onchange: m.withAttr("value", ctrl.price),
-            value: ctrl.price()
-          })
-        ]),
-        m(".addbottle-sacred", [
-          m("label", "Is this bottle totally sacred to you?"),
-          m("input", {type: "checkbox", value: ctrl.sacred(), onchange: m.withAttr("value", ctrl.sacred)})
-        ]),
-        m(".addbottle-submit", [
-          m("button", {onclick: ctrl.submit}, "Submit")
-        ])
+        price(ctrl.price),
+        pickowner(ctrl.owner, ctrl.users),
+        sacred(ctrl.sacred),
+        submit(ctrl.submit)
       ]);
     }
   };
+
+  var price = function (prop) {
+    return m(".addbottle-price",[
+      m("label", "Price"),
+      m("input", {
+        type: "number",
+        onchange: m.withAttr("value", prop),
+        value: prop()
+      })
+    ]);
+  };
+
+  var pickowner = function (owner, users) {
+    return m(".addbottle-pickowner", [
+      m("label", "Owner"),
+      m(".clearfix"),
+      m("ul", [
+        m("li.addbottle-owner", owner().firstname),
+        users().map(function (user) {
+          return m("li.addbottle-user", {
+            onclick: function () {
+              owner(user);
+            }
+          },user.firstname);
+        })
+      ])
+    ]);
+  };
+
+  var sacred = function (prop) {
+    return m(".addbottle-sacred", [
+      m("label", "Is this bottle totally sacred to you?"),
+      m("input", {
+        type: "checkbox",
+        value: prop(),
+        onchange: m.withAttr("value", prop)
+      })
+    ]);
+  };
+
+  var submit = function (submit) {
+    return m(".addbottle-submit", [
+      m("button", {onclick: submit}, "Submit")
+    ]);
+  };
+
+  var fetchLiquor = function (id) {
+    var liquor = m.prop({});
+
+    m.request({
+      method: "GET",
+      url: "/api/liquor/"+ id
+    }).then(liquor);
+
+    return liquor;
+  };
+
+  var postBottle = function (data) {
+    var xhrConfig = function(xhr) {
+      xhr.setRequestHeader("Content-Type", "application/json");
+    };
+    return m.request({
+      method: "POST",
+      url: "/api/bottles",
+      config: xhrConfig,
+      data: data
+    });
+  };
+
+  var fetchMe = function () {
+    var me = m.prop({});
+
+    m.request({
+      method: "GET",
+      url: "/api/me"
+    }).then(me);
+
+    return me;
+  };
+
+  var fetchUsers = function () {
+    var users = m.prop([]);
+    m.request({
+      method: "GET",
+      url: "/api/users"
+    }).then(users);
+
+    return users;
+  };
+
 })(window.bke = window.bke || {});

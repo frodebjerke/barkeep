@@ -1,5 +1,6 @@
 var common = require('./common');
 var mysql = require('../../config/mysql');
+var util = require('util');
 
 exports.list = common.list('bottle', 'where volume_ml > 0 order by added desc');
 exports.search = common.list('bottle');
@@ -12,7 +13,7 @@ exports.create = function (req, res) {
     product_id: body.liquor.product_no,
     name: body.liquor.name,
     category: body.liquor.primary_category,
-    owner_id: req.session.passport.user.id,
+    owner_id: body.owner.id,
     price_nok: body.price,
     volume_ml: body.liquor.volume_in_milliliters,
     size_ml: body.liquor.volume_in_milliliters,
@@ -20,10 +21,8 @@ exports.create = function (req, res) {
     image: body.liquor.image_url,
     added: new Date(),
     sacred: body.sacred,
-    owner_name: req.session.passport.user.name
+    owner_name: util.format("%s %s", body.owner.firstname, body.owner.lastname)
   };
-
-
 
   mysql.getConnection(function (err, connection) {
     if (err) common.error(err, res);
@@ -39,7 +38,7 @@ exports.create = function (req, res) {
       if (err) common.error(err, res);
       connection.query("insert into bottle set ?", bottle, function (error, result) {
         queryError(error);
-        connection.query("update user set balance = balance +"+body.price, function (error, result2) {
+        connection.query("update user set balance = balance +"+body.price +" where id = "+ body.owner.id, function (error, result2) {
           queryError(error);
           connection.commit(function (error) {
             queryError(error);
