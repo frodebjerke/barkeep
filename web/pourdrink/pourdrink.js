@@ -3,26 +3,14 @@
     controller: function (bottleid) {
       bottleid = bottleid || m.route.param("bottle");
       var amount = m.prop(m.route.param("amount") || 40);
-      var bottle = m.prop({});
-
-      m.request({
-        method: "GET",
-        url: "/api/bottles/"+bottleid
-      }).then(bottle);
+      var bottle = fetchBottle(bottleid);
 
       var submit = function () {
-        var xhrConfig = function (xhr) {
-          xhr.setRequestHeader("Content-Type", "application/json");
+        var data = {
+          bottle: bottle(),
+          amount: amount()
         };
-        m.request({
-          method: "POST",
-          url: "/api/drinks",
-          config: xhrConfig,
-          data: {
-            bottle: bottle(),
-            amount: amount()
-          }
-        }).then(function () {
+        postDrink(data).then(function () {
           m.route("/");
         });
       };
@@ -36,17 +24,48 @@
     view: function (ctrl) {
       return m(".el-pourdrink", [
         m(".pourdrink-bottle", bke.views.bottle(ctrl.data())),
-        m(".pourdrink-amount", [
-          m("label", "How much (ml) ?"),
-          m("input", {
-            onchange: m.withAttr("value", ctrl.amount),
-            value: ctrl.amount()
-          })
-        ]),
-        m(".pourdrink-submit", [
-          m("button", {onclick: ctrl.submit}, "Submit")
-        ])
+        amount(ctrl.amount),
+        submit(ctrl.submit)
       ]);
     }
+  };
+
+  var amount = function (amount) {
+    return m(".pourdrink-amount", [
+      m("label", "How much (ml) ?"),
+      m("input", {
+        onchange: m.withAttr("value", amount),
+        value: amount()
+      })
+    ]);
+  };
+
+  var submit = function (submit) {
+    return m(".pourdrink-submit", [
+      m("button", {onclick: submit}, "Submit")
+    ]);
+  };
+
+  var fetchBottle = function (id) {
+    var bottle = m.prop({});
+
+    m.request({
+      method: "GET",
+      url: "/api/bottles/"+id
+    }).then(bottle);
+
+    return bottle;
+  };
+
+  var postDrink = function (data) {
+    var xhrConfig = function (xhr) {
+      xhr.setRequestHeader("Content-Type", "application/json");
+    };
+    return m.request({
+      method: "POST",
+      url: "/api/drinks",
+      config: xhrConfig,
+      data: data
+    });
   };
 })(window.bke = window.bke || {});
