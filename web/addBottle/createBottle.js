@@ -55,18 +55,18 @@
 
   var pickowner = function (owner, users) {
     return m(".addbottle-pickowner", [
-      m("label", "Owner"),
+      m("label","Owner"),
       m(".clearfix"),
-      m("ul", [
-        m("li.addbottle-owner", owner().firstname),
-        users().map(function (user) {
-          return m("li.addbottle-user", {
-            onclick: function () {
-              owner(user);
-            }
-          },user.firstname);
-        })
-      ])
+      m("ul", users().map(function (user) {
+        return m("li", {
+          onclick: function () {
+            owner(user);
+          },
+          style: "background-image:url('"+profilePicture(user.id)+"');"
+        }, m(".addbottle-user", {
+          class: user.id === owner().id ? "owner" : "junk"
+        }));
+      }))
     ]);
   };
 
@@ -129,6 +129,10 @@
     }).then(users);
 
     return users;
+  };
+
+  var profilePicture = function (id) {
+    return "https://graph.facebook.com/"+id+"/picture";
   };
 
 })(window.bke = window.bke || {});
