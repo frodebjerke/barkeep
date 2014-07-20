@@ -46,7 +46,13 @@
 
   var bottleinfo = function () {
     return m(".el-bottleinfo", [
-      m("h2.bottleinfo-title", "Bottles in the cabinet:")
+      m("h2.bottleinfo-title", "Bottles in the cabinet:"),
+      m(".bottleinfo-links", [
+        m("a", {
+          href: "/addbottle",
+          config: m.route
+        }, "New bottle")
+      ])
     ]);
   };
 

@@ -1,8 +1,10 @@
 @import 'colors.less';
+@import 'forms.less';
 
 .el-bottleinfo {
   height: inherit;
   padding: 1em;
+  position: relative;
 
   .bottleinfo-title {
     text-transform: uppercase;
@@ -32,5 +34,11 @@
       padding-left: 0.5em;
       text-transform: uppercase;
     }
+  }
+
+  .bottleinfo-links {
+    .nav();
+    position: absolute;
+    bottom: 1em;
   }
 }
