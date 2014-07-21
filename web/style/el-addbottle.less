@@ -2,6 +2,8 @@
 @import 'colors.less';
 @import 'transitions.less';
 
+@fbPhotoSize: 50px;
+
 .el-addbottle {
   .addbottle-liquor {
     height: 20em;
@@ -20,17 +22,23 @@
 
       .addbottle-user {
         .bgTransition();
-        width: 50px;
-        height: 50px;
-        &.owner {
-          background-color: @submitoverlay;
-        }
+        width: @fbPhotoSize;
+        height: @fbPhotoSize;
         &:hover {
           background-color: @useroverlay;
         }
       }
 
     }
+  }
+
+  .addbottle-owner {
+    width: @fbPhotoSize;
+    height: @fbPhotoSize;
+  	border-radius: @fbPhotoSize;
+  	-webkit-border-radius: @fbPhotoSize;
+  	-moz-border-radius: @fbPhotoSize;
+    margin-right: 0.5em;
   }
 
   .addbottle-sacred {

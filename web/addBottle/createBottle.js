@@ -57,16 +57,20 @@
     return m(".addbottle-pickowner", [
       m("label","Owner"),
       m(".clearfix"),
-      m("ul", users().map(function (user) {
-        return m("li", {
-          onclick: function () {
-            owner(user);
-          },
-          style: "background-image:url('"+profilePicture(user.id)+"');"
-        }, m(".addbottle-user", {
-          class: user.id === owner().id ? "owner" : "junk"
-        }));
-      }))
+      m("ul", [
+        m("li.addbottle-owner", {
+          style: "background-image:url('"+profilePicture(owner().id)+"');"
+        }),
+        users().map(function (user) {
+          return m("li", {
+            onclick: function () {
+              owner(user);
+            },
+            style: "background-image:url('"+profilePicture(user.id)+"');"
+          }, m(".addbottle-user", {
+          }));
+        })
+      ])
     ]);
   };
 
