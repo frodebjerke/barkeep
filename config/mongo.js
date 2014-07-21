@@ -19,5 +19,5 @@ exports.connectToMongo = function() {
 };
 
 exports.getDbUrl = function(){
-	return  process.env.MONGO_URI || 'mongodb://localhost/barkeep';
+	return  process.env.MONGO_URI || 'mongodb://localhost/villevillavika';
 };
