@@ -1,31 +1,14 @@
 (function (bke) {
-  var home = {
-    controller: function () {
-      return {
-        personstats: new bke.personstats.controller(),
-        lastdrinks: new bke.nlastdrinks.controller(3),
-        lastbottles: new bke.nlastbottles.controller(18)
-      };
-    },
-    view: function (ctrl) {
-      return m("", [
-        bke.nlastdrinks.view(ctrl.lastdrinks),
-        bke.personstats.view(ctrl.personstats),
-        bke.nlastbottles.view(ctrl.lastbottles),
-      ]);
-    }
-  };
-
   m.startComputation();
 
   m.module(document.getElementById("menu-region"), bke.modules.menu);
   m.route(document.getElementById("barkeep-region"), "/", {
-    "/": home,
-    "/addbottle": bke.liquorlist,
-    "/addbottle/:id": bke.createBottle,
-    "/pourdrink": bke.bottlelist,
-    "/pourdrink/:bottle": bke.pourDrink,
-    "/pourdrink/:bottle/:amount": bke.pourDrink
+    "/": bke.landing.landing,
+    "/addbottle": bke.addbottle.liquorlist,
+    "/addbottle/:id": bke.addbottle.createBottle,
+    "/pourdrink": bke.pourdrink.bottlelist,
+    "/pourdrink/:bottle": bke.pourdrink.pourDrink,
+    "/pourdrink/:bottle/:amount": bke.pourdrink.pourDrink
   });
   m.endComputation();
 

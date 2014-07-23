@@ -1,5 +1,5 @@
 (function (bke) {
-  bke.pourDrink = {
+  bke.pourdrink.pourDrink = {
     controller: function (bottleid) {
       bottleid = bottleid || m.route.param("bottle");
       var amount = m.prop(m.route.param("amount") || 40);

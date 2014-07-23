@@ -1,5 +1,5 @@
 (function (bke) {
-  bke.createBottle = {
+  bke.addbottle.addBottle = {
     controller: function (liquorid) {
       liquorid = liquorid || m.route.param("id");
 

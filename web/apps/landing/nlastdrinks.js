@@ -1,5 +1,5 @@
   (function (bke) {
-  bke.nlastdrinks = {
+  bke.landing.nlastdrinks = {
     controller: function (n) {
       var drinks = m.prop([]);
       m.request({

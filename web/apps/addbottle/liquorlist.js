@@ -7,5 +7,5 @@
     }).then(liquors);
   };
 
-  bke.liquorlist = bke.modules.search(bke.views.liquor, doQuery);
+  bke.addbottle.liquorlist = bke.modules.search(bke.views.liquor, doQuery);
 })(window.bke = window.bke || {});

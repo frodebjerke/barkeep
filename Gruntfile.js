@@ -44,11 +44,8 @@ module.exports = function (grunt) {
           'web/shared/shared.js',
           'web/shared/views/**/*.js',
           'web/shared/modules/**/*.js',
-          'web/addBottle/**/*.js',
-					'web/pourdrink/**/*.js',
-          'web/drinks/**/*.js',
-          'web/bottles/**/*.js',
-          'web/person/**/*.js',
+          'web/apps/appregister.js',
+					'web/apps/**/*.js',
           'web/app.js',
 					]
 				}

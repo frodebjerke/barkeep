@@ -6,5 +6,5 @@
     }).then(bottles);
   };
 
-  bke.bottlelist = bke.modules.search(bke.views.bottle, doQuery);
+  bke.pourdrink.bottlelist = bke.modules.search(bke.views.bottle, doQuery);
 })(window.bke = window.bke || {});

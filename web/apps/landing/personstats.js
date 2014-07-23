@@ -1,5 +1,5 @@
 (function (bke) {
-  bke.personstats = {
+  bke.landing.personstats = {
     controller: function (userid) {
       userid = userid || m.route.param("userid");
       var user = m.prop({});
