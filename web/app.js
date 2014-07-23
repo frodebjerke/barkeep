@@ -5,6 +5,7 @@
   m.route(document.getElementById("barkeep-region"), "/", {
     "/": bke.landing.landing,
     "/addbottle": bke.addbottle.liquorlist,
+    "/addbottle/newliquor": bke.addbottle.newliquor,
     "/addbottle/:id": bke.addbottle.addBottle,
     "/pourdrink": bke.pourdrink.bottlelist,
     "/pourdrink/:bottle": bke.pourdrink.pourDrink,
