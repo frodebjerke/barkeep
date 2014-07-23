@@ -2,9 +2,9 @@
   bke.views.liquor = function (liquor) {
     return m(".el-liquor", {
       onclick: function () {
-        m.route("/addbottle/"+ liquor.product_no);
+        m.route("/addbottle/"+ liquor._id);
       },
-      style: "background-image:url('"+liquor.image_url+"');"
+      style: "background-image:url('"+liquor.images.external+"');"
     },m(".liquor-info", [
       m(".liquor-name", liquor.name)
     ]));

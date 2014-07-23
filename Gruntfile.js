@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 					mangle: false,
 					compress: false,
 					preserveComments: 'all',
-					beautify: false
+					beautify: true
 				},
 				files: {
 					'public/build/lib.js': [

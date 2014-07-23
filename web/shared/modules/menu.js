@@ -35,7 +35,7 @@
     },
     menuItem: function (item) {
       return m("a.menu-item", {
-          href: '/?'+ item.url()
+          href: '/#'+ item.url()
         }, item.name());
     }
   };

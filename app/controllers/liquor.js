@@ -21,7 +21,7 @@ exports.search = function (req, res) {
 };
 
 exports.get = function (req, res) {
-  Liquor.findOne({product_no: req.params.productno}, function (err, liquor) {
+  Liquor.findOne({_id: req.params.productno}, function (err, liquor) {
     if (err) common.error(err, res);
     imageOrDummy(liquor);
     res.send(liquor);

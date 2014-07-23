@@ -8,13 +8,13 @@
         var timer;
 
         doQuery(query, result);
-        
+
         return {
           debounce: function (term) {
               query(term);
               timer && clearTimeout(timer);
               timer = setTimeout(function () {
-                  doQuery(query(), result);
+                  doQuery(query, result);
                 }, 300);
           },
           query: query,
