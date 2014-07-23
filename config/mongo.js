@@ -3,7 +3,7 @@ var mongoose	= require('mongoose');
 
 exports.connectToMongo = function() {
 
-	var uristring = process.env.MONGO_URI || 'mongodb://localhost/barkeep';
+	var uristring = process.env.MONGO_URI || 'mongodb://localhost/villevillavika';
 
 	// Makes connection asynchronously.  Mongoose will queue up database
 	// operations and release them when the connection is complete.
