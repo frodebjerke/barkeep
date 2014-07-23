@@ -1,25 +1,10 @@
 (function (bke) {
-  bke.bottlelist = {
-    controller: function () {
-      var query = m.prop("");
-      var bottles = m.prop([]);
-
-      var doQuery = function (term) {
-        query(term);
-        m.request({
-          method: "GET",
-          url: "/search/bottle/"+query()
-        }).then(bottles);
-      };
-
-      doQuery("");
-
-      return {
-        result: bottles,
-        query: query,
-        doQuery: doQuery
-      };
-    },
-    view: bke.views.search(bke.views.bottle)
+  var doQuery = function (term, bottles) {
+    m.request({
+      method: "GET",
+      url: "/search/bottle/"+term()
+    }).then(bottles);
   };
+
+  bke.bottlelist = bke.modules.search(bke.views.bottle, doQuery);
 })(window.bke = window.bke || {});

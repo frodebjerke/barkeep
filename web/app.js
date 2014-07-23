@@ -18,7 +18,7 @@
 
   m.startComputation();
 
-  m.module(document.getElementById("menu-region"), bke.menu);
+  m.module(document.getElementById("menu-region"), bke.modules.menu);
   m.route(document.getElementById("barkeep-region"), "/", {
     "/": home,
     "/addbottle": bke.liquorlist,

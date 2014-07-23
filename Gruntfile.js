@@ -41,7 +41,9 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'public/build/app.js': [
-          'web/shared/**/*.js',
+          'web/shared/shared.js',
+          'web/shared/views/**/*.js',
+          'web/shared/modules/**/*.js',
           'web/addBottle/**/*.js',
 					'web/pourdrink/**/*.js',
           'web/drinks/**/*.js',

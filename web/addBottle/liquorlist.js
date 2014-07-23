@@ -1,23 +1,11 @@
 (function (bke) {
-  bke.liquorlist = {
-    controller: function () {
-      var query = m.prop("");
-      var liquors = m.prop([]);
 
-      var doQuery = function (term) {
-        query(term);
-        m.request({
-          method: "GET",
-          url: "/search/liquor/"+ query()
-        }).then(liquors);
-      };
-      doQuery("");
-      return {
-        result: liquors,
-        query: query,
-        doQuery: doQuery
-      };
-    },
-    view: bke.views.search(bke.views.liquor)
+  var doQuery = function (term, liquors) {
+    m.request({
+      method: "GET",
+      url: "/search/liquor/"+ term()
+    }).then(liquors);
   };
+
+  bke.liquorlist = bke.modules.search(bke.views.liquor, doQuery);
 })(window.bke = window.bke || {});

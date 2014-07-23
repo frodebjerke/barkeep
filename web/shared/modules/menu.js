@@ -1,5 +1,5 @@
 (function (bke) {
-  bke.menu = {
+  bke.modules.menu = {
     controller: function () {
       var links = m.prop([
         {name: m.prop("Barkeep"), url: m.prop("/")},
