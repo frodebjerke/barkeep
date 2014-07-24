@@ -28,6 +28,11 @@ exports.get = function (req, res) {
   });
 };
 
+exports.post = function (req, res) {
+  console.log(req.body);
+  res.send(req.body);
+};
+
 var imageOrDummy = function (liquor) {
   liquor.image_url = liquor.image_url || "static/dummy.jpg";
   liquor.image_thumb_url = liquor.image_thumb_url || "static/dummy.jpg";

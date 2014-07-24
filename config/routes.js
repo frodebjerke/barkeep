@@ -24,6 +24,7 @@ module.exports = function (app) {
   app.post("/api/drinks", ensureAuthenticated, drinkCtrl.pourdrink);
 
   app.get("/api/liquor/:productno", ensureAuthenticated, liquorCtrl.get);
+  app.post("/api/liquor", ensureAuthenticated, liquorCtrl.post);
 
   app.get("/search/liquor", ensureAuthenticated, liquorCtrl.list);
   app.get("/search/liquor/:query", ensureAuthenticated, liquorCtrl.search);
