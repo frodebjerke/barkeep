@@ -9,3 +9,13 @@ db.liquor.aggregate(
   }, {
     $limit: 5
   }])
+
+
+db.liquor.aggregate(
+  [{
+    $group: {
+      _id: "$category.primary",
+      count: {$sum: 1}
+    }
+  }]
+)
