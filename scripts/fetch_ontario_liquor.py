@@ -8,7 +8,7 @@ base_url = "http://www.lcboapi.com"
 #url = "mongodb://barkeep:en gang i blandt@kahana.mongohq.com:10085/villevillavika"
 client = pymongo.MongoClient()
 
-def liquor(liquor):
+def transform(liquor):
   name = liquor['name']
   updated_at = datetime.datetime.now()
 
@@ -36,10 +36,15 @@ def liquor(liquor):
   }
   images = dict((k, v) for k, v in images.iteritems() if v)
 
+  origin = liquor['origin'].split(", ")
   about = {
-    'origin': liquor['origin'],
     'producer': liquor['producer_name']
   }
+  if len(origin) > 0:
+    about['origin'] = origin[0]
+  if len(origin) == 2 and origin[1] != "Region Not Specified":
+    about['region'] = origin[1]
+
   about = dict((k, v) for k, v in about.iteritems() if v)
 
   notes = {
@@ -76,11 +81,20 @@ def product(liquor):
     'units': liquor['total_package_units']
   }
 
+def keep(liquor):
+  if liquor['category']['primary'] in ["Ready-to-Drink/Coolers", "Non-Alc"]:
+    return False
+  if 'secondary' in liquor['category'] and liquor['category']['secondary'] in ["Gift and Sampler Packs"]:
+    return False
+  return True
+
 def parsePage(page):
   data = json.loads(page)
   if (data['status'] == 200):
     for b in data["result"]:
-      client['villevillavika']['liquor'].update({'name': b['name']},{"$push": {'products': product(b)}, "$set": liquor(b)}, upsert=True)
+      liquor = transform(b)
+      if (keep(liquor)):
+        client['villevillavika']['liquor'].update({'name': b['name']},{"$push": {'products': product(b)}, "$set": liquor}, upsert=True)
     return data['pager']['next_page_path']
   else:
     raise Exception('status code', data['status'])
