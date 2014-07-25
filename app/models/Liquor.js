@@ -4,11 +4,12 @@ var Liquor = mongoose.Schema({
   name: String,
   about: {
     producer: String,
-    origin: String
+    origin: String,
+    region: String
   },
   images: {
-    external: String,
-    external_thumb: String
+    large: String,
+    thumb: String
   },
   category: {
     primary: String,
