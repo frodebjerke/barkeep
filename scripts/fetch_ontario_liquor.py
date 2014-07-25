@@ -75,10 +75,10 @@ def product(liquor):
   return {
     'size_ml': liquor['volume_in_milliliters'],
     'material': liquor['package_unit_type'],
-    'country': 'Canada',
-    'date': datetime.datetime.now(),
-    'price': liquor['regular_price_in_cents'] / 100 * 5,
-    'units': liquor['total_package_units']
+    'price_updated': datetime.datetime.now(),
+    'price': liquor['regular_price_in_cents'] / 100 * 5 * 1.3,
+    'units': liquor['total_package_units'],
+    'logged': 0
   }
 
 def keep(liquor):
