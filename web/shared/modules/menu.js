@@ -29,13 +29,14 @@
           onclick: ctrl.toggleMenu
         },"m"),
         m(".menu-list.col-xs-12",
-          ctrl.links().map(this.menuItem)
+          ctrl.links().map(this.menuItem, ctrl)
         )
       ]);
     },
     menuItem: function (item) {
       return m("a.menu-item", {
-          href: '/#'+ item.url()
+          href: '/#'+ item.url(),
+          onclick: this.toggleMenu
         }, item.name());
     }
   };
