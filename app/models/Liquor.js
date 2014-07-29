@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var Liquor = mongoose.Schema({
   name: String,
+  logged: Number,
   about: {
     producer: String,
     origin: String,

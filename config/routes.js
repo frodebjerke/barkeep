@@ -12,7 +12,7 @@ module.exports = function (app) {
 
   app.get("/api/bottles", ensureAuthenticated, bottleCtrl.list);
   app.get("/api/bottles/:id", ensureAuthenticated, bottleCtrl.get);
-  app.post("/api/bottles", ensureAuthenticated, bottleCtrl.create);
+  app.post("/api/bottles", bottleCtrl.create);
 
   app.get("/api/users", ensureAuthenticated, userCtrl.list);
   app.get("/api/users/:id", ensureAuthenticated, userCtrl.get);

@@ -12,7 +12,7 @@ create table user (
 
 create table bottle (
   id int not null auto_increment,
-  product_id int not null,
+  product_id varchar(200) not null,
   name varchar(200) not null,
   category varchar(200) not null,
   owner_id varchar(64) not null,
