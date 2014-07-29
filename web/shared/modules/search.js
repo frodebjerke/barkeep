@@ -35,7 +35,6 @@
       m("input.col-xs-11.col-md-8", {
         autofocus: "autofocus",
         placeholder: "Search ...",
-        onchange: query,
         onkeyup: m.withAttr("value", debounce),
         value: query()
       }),
