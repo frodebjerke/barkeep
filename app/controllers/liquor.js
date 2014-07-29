@@ -3,14 +3,14 @@ var Liquor = mongoose.model('Liquor');
 var common = require("./common");
 
 exports.list = function (req, res) {
-  Liquor.find({}).limit(100).exec(function (err, result) {
+  Liquor.find({}).sort({'logged': 'desc'}).limit(100).exec(function (err, result) {
     if (err) common.error(err, res);
     res.send(result);
   });
 };
 
 exports.search = function (req, res) {
-  Liquor.find({name: {$regex: req.params.query, $options: 'i'}}).limit(30).exec(function (err, out) {
+  Liquor.find({name: {$regex: req.params.query, $options: 'i'}}).sort({'logged': 'desc'}).limit(30).exec(function (err, out) {
     if (err) common.error(err, res);
     res.send(out.map(function (e) {
       return e;
