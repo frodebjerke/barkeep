@@ -1,3 +1,4 @@
+// top 5 varietals
 db.liquor.aggregate(
   [{
     $group: {
@@ -10,7 +11,7 @@ db.liquor.aggregate(
     $limit: 5
   }])
 
-
+// all primary categories with count
 db.liquor.aggregate(
   [{
     $group: {
@@ -19,3 +20,13 @@ db.liquor.aggregate(
     }
   }]
 )
+
+// #logged in each primary category
+db.liquor.aggregate([
+  {
+    $group: {
+      _id: "$category.primary",
+      numlogged: {$sum: "$logged"}
+    }
+  }
+]);
