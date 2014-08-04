@@ -18,7 +18,8 @@
     "body-parser": "^1.4.3",
     "mongoose": "latest",
     "passport": "^0.2.0",
-    "passport-facebook": "^1.0.3"
+    "passport-facebook": "^1.0.3",
+    "q": "latest"
   },
   "devDependencies": {
     "grunt": "latest",

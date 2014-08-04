@@ -1,4 +1,4 @@
-var mysql = require('../../config/mysql');
+var mq = require('../../lib/db/mysql/query');
 var util = require('util');
 
 exports.list = function (table, moresql) {
@@ -11,14 +11,13 @@ exports.list = function (table, moresql) {
     var query = util.format(
       'select * from %s %s limit %s, %s ',table, moresql, offset, limit
     );
-    mysql.getConnection(function (err, connection) {
-      if (err) exports.error(err, res);
-      connection.query(query, function (err, rows, fields) {
-        if (err) exports.error(err, res);
-        res.send(rows);
-        connection.release();
+
+    var q = mq.query();
+    q.getConnection()
+      .then(q.exec(query))
+      .done(function (result) {
+        res.send(result);
       });
-    });
   };
 };
 
@@ -31,15 +30,14 @@ exports.get = function (table, on) {
       "select * from %s where %s = %s",
       table, on, id
     );
-    mysql.getConnection(function (err, connection) {
-      if (err) exports.error(err, res);
-      connection.query(query, function (err, rows, fields) {
-        if (err) exports.error(err, res);
-        if (rows.length < 1) res.send({error: "Not found"}, 400);
-        res.send(rows[0]);
-        connection.release();
+
+    var q = mq.query();
+    q.getConnection()
+      .then(q.exec(query))
+      .done(function (result) {
+        if (result.length < 1) res.send({error: "Not found"}, 400);
+        else res.send(result[0]);
       });
-    });
   };
 };
 
