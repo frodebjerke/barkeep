@@ -15,9 +15,11 @@ exports.list = function (table, moresql) {
     var q = mq.query();
     q.getConnection()
       .then(q.exec(query))
-      .done(function (result) {
+      .then(function (result) {
         res.send(result);
-      });
+      })
+      .then(q.release)
+      .done();
   };
 };
 
@@ -34,10 +36,12 @@ exports.get = function (table, on) {
     var q = mq.query();
     q.getConnection()
       .then(q.exec(query))
-      .done(function (result) {
+      .then(function (result) {
         if (result.length < 1) res.send({error: "Not found"}, 400);
         else res.send(result[0]);
-      });
+      })
+      .then(q.release)
+      .done;
   };
 };
 
