@@ -3,7 +3,7 @@ var mq = require('../../lib/db/mysql/query');
 var util = require('util');
 var mongoose = require('mongoose');
 var Liquor = mongoose.model('Liquor');
-var Q = require('Q');
+var Q = require('q');
 
 exports.list = common.list('bottle', 'where volume_ml > 0 order by added desc');
 exports.search = common.list('bottle');
