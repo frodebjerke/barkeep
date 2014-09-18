@@ -1,5 +1,6 @@
 var mysql = require('../../config/mysql');
 var common = require('./common');
+var mq = require('../../lib/db/mysql/query');
 
 exports.get = common.get("drink");
 
@@ -21,32 +22,23 @@ exports.pourdrink = function (req, res) {
     user_name: req.session.passport.user.name
   };
 
-  mysql.getConnection(function (err, connection) {
-    if (err) common.error(err, res);
-    var queryError = function (error) {
-      if (error) {
-        connection.rollback(function () {
-          common.error(error, res);
-          connection.release();
-        });
-      }
-    };
-    connection.beginTransaction(function (err) {
-      if (err) common.error(err, res);
-      connection.query("insert into drink set ?", drink, function (error, result) {
-        queryError(error);
-        connection.query("update bottle set volume_ml = volume_ml - "+ data.amount +" where id = "+ data.bottle.id, function (error, result2) {
-          queryError(error);
-          connection.commit(function (error) {
-            queryError(error);
-            common.createOk(req, res, result);
-            connection.release();
-          });
-        });
+  var updateBottle = "update bottle set volume_ml = volume_ml - "+ data.amount +" where id = "+ data.bottle.id;
+  var updateUser = "update user set balance = balance -"+drink.price_nok +" where id = "+ drink.user_id;
+  var q = mq.query();
+  var insertRes = {};
 
-      });
-    });
-  });
+  q.getConnection()
+    .then(q.beginTransaction)
+    .then(q.insert("insert into drink set ?", drink))
+    .then(function (result) {
+      insertRes.insertId = result.insertId;
+    })
+    .then(q.exec(updateBottle))
+    .then(q.exec(updateUser))
+    .then(q.commit)
+    .fail(q.rollback)
+    .finally(q.release)
+    .done(common.createOk.bind(null, req, res, insertRes));
 };
 
 var calculatePrice = function (drinksize, bottle) {
