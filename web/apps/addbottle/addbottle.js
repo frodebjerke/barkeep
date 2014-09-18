@@ -2,32 +2,28 @@
   bke.addbottle.addBottle = {
     controller: function (liquorid) {
       liquorid = liquorid || m.route.param("id");
+      var ctrl = this;
+      this.liquor = m.prop({});
+      this.product = m.prop({});
+      this.sacred = m.prop(false);
+      this.owner = fetchMe();
+      this.users = fetchUsers();
 
-      var liquor = fetchLiquor(liquorid);
-      var product = productmodel();
-      var sacred = m.prop(false);
-      var owner = fetchMe();
-      var users = fetchUsers();
+      bke.Liquor.getById(liquorid).then(this.liquor).then(function (l) {
+        if (l.products.length) ctrl.product(productmodel(l.products[0])());
+      });
 
-      var submit = function () {
+      this.submit = function () {
         var data = {
-          liquor: liquor(),
-          owner: owner(),
-          product: product(),
-          sacred: sacred()
+          liquor: ctrl.liquor(),
+          owner: ctrl.owner(),
+          product: ctrl.product(),
+          sacred: ctrl.sacred()
         };
 
         postBottle(data).then(function () {
           m.route("/");
         });
-      };
-      return {
-        liquor: liquor,
-        product: product,
-        owner: owner,
-        users: users,
-        sacred: sacred,
-        submit: submit
       };
     },
     view: function (ctrl) {
@@ -131,17 +127,6 @@
     return m(".addbottle-submit", [
       m("button", {onclick: submit}, "Submit")
     ]);
-  };
-
-  var fetchLiquor = function (id) {
-    var liquor = m.prop({});
-
-    m.request({
-      method: "GET",
-      url: "/api/liquor/"+ id
-    }).then(liquor);
-
-    return liquor;
   };
 
   var postBottle = function (data) {
