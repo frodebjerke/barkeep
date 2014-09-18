@@ -1,8 +1,9 @@
-(function (bke) {
+var Liquor = require('../../modules/Liquor');
+var liquorView = require('../../shared/views/liquor');
+var searchModule = require('../../shared/modules/search');
 
-  var doQuery = function (term, liquors) {
-    bke.Liquor.getAll(term).then(liquors);
-  };
+var doQuery = function (term, liquors) {
+  Liquor.getAll(term).then(liquors);
+};
 
-  bke.addbottle.liquorlist = bke.modules.search(bke.views.liquor, doQuery);
-})(window.bke = window.bke || {});
+module.exports = searchModule(liquorView, doQuery);

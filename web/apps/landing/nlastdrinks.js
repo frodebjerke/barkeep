@@ -1,5 +1,7 @@
-  (function (bke) {
-  bke.landing.nlastdrinks = {
+var m = require('mithril');
+var drinkView = require('../../shared/views/drink');
+
+module.exports = {
     controller: function (n) {
       var drinks = m.prop([]);
       m.request({
@@ -16,9 +18,8 @@
       return m(".el-lastdrinks", [
         m(".lastdrinks-title", "Most recently poured drinks ..."),
         drinks().map(function (drink) {
-          return bke.views.drink(drink);
+          return drinkView(drink);
         })
       ]);
     }
   };
-})(window.bke = window.bke || {});

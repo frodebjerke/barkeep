@@ -1,18 +1,21 @@
-(function (bke) {
-  bke.landing.landing = {
-    controller: function () {
-      return {
-        personstats: new bke.landing.personstats.controller(),
-        lastdrinks: new bke.landing.nlastdrinks.controller(3),
-        lastbottles: new bke.landing.nlastbottles.controller(18)
-      };
-    },
-    view: function (ctrl) {
-      return m("", [
-        bke.landing.nlastdrinks.view(ctrl.lastdrinks),
-        bke.landing.personstats.view(ctrl.personstats),
-        bke.landing.nlastbottles.view(ctrl.lastbottles),
-      ]);
-    }
-  };
-})(window.bke = window.bke || {});
+var m = require('mithril');
+var personstats = require('./personstats');
+var nlastdrinks = require('./nlastdrinks');
+var nlastbottles = require('./nlastbottles');
+
+module.exports = {
+  controller: function () {
+    return {
+      personstats: new personstats.controller(),
+      lastdrinks: new nlastdrinks.controller(3),
+      lastbottles: new nlastbottles.controller(18)
+    };
+  },
+  view: function (ctrl) {
+    return m("", [
+      nlastdrinks.view(ctrl.lastdrinks),
+      personstats.view(ctrl.personstats),
+      nlastbottles.view(ctrl.lastbottles),
+    ]);
+  }
+};

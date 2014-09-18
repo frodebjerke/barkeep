@@ -1,10 +1,12 @@
-(function (bke) {
-  var doQuery = function (term, bottles) {
-    m.request({
-      method: "GET",
-      url: "/search/bottle/"+term()
-    }).then(bottles);
-  };
+var m = require('mithril');
+var searchModule = require('../../shared/modules/search');
+var bottleView = require('../../shared/views/bottle');
 
-  bke.pourdrink.bottlelist = bke.modules.search(bke.views.bottle, doQuery);
-})(window.bke = window.bke || {});
+var doQuery = function (term, bottles) {
+  m.request({
+    method: "GET",
+    url: "/search/bottle/"+term()
+  }).then(bottles);
+};
+
+module.exports = searchModule(bottleView, doQuery);

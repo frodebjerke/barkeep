@@ -1,5 +1,6 @@
-(function (bke) {
-  bke.views.datalist = function (id, prop, list) {
+var m = require('mithril');
+
+module.exports = function (id, prop, list) {
     return [
       m("label", id),
       m("input", {
@@ -16,5 +17,3 @@
       }))
     ];
   };
-
-})(window.bke = window.bke || {});

@@ -1,5 +1,3 @@
-(function (bke) {
-  bke.Bottle = function (data) {
+module.exports = function (data) {
 
-  };
-})(window.bke = window.bke || {});
+};

@@ -1,16 +1,18 @@
-(function (bke) {
-  m.route.mode = "hash";
-  m.startComputation();
-  m.module(document.getElementById("menu-region"), bke.modules.menu);
-  m.route(document.getElementById("barkeep-region"), "/", {
-    "/": bke.landing.landing,
-    "/addbottle": bke.addbottle.liquorlist,
-    "/addbottle/newliquor": bke.addbottle.newliquor,
-    "/addbottle/:id": bke.addbottle.addBottle,
-    "/pourdrink": bke.pourdrink.bottlelist,
-    "/pourdrink/:bottle": bke.pourdrink.pourDrink,
-    "/pourdrink/:bottle/:amount": bke.pourdrink.pourDrink
-  });
-  m.endComputation();
+var m = require('mithril');
+var landing = require('./apps/landing/landing');
+var liquorlist = require('./apps/addbottle/liquorlist');
+var newliquor = require('./apps/addbottle/newliquor');
+var addBottle = require('./apps/addbottle/addbottle');
+var bottlelist = require('./apps/pourdrink/bottlelist');
+var pourdrink = require('./apps/pourdrink/pourdrink');
 
-})(window.bke = window.bke || {});
+m.route.mode = "hash";
+m.route(document.getElementById("barkeep-region"), "/", {
+  "/": landing,
+  "/addbottle": liquorlist,
+  "/addbottle/newliquor": newliquor,
+  "/addbottle/:id": addBottle,
+  "/pourdrink": bottlelist,
+  "/pourdrink/:bottle": pourdrink,
+  "/pourdrink/:bottle/:amount": pourdrink
+});

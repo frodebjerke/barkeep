@@ -1,6 +1,8 @@
-(function (bke) {
-  bke.landing.nlastbottles = {
-    controller: function (n) {
+var m = require('mithril');
+var bottleView = require('../../shared/views/bottle');
+
+module.exports = {
+  controller: function (n) {
       var bottles = m.prop([]);
       var stats = m.prop({
         inCabinet: m.prop("n/a"),
@@ -31,7 +33,7 @@
           ctrl.bottles().map(function (bottle) {
             return [
               m(".lastbottles-bottle.col-xs-12.col-sm-4.col-md-3.col-lg-2", [
-                bke.views.bottle(bottle)
+                bottleView(bottle)
               ])
             ];
           }),
@@ -73,4 +75,3 @@
       ])
     ]);
   };
-})(window.bke = window.bke || {});
