@@ -1,9 +1,0 @@
-{
-  "name": "barkeep-web",
-  "version": "0.0.1",
-  "dependencies": {
-    "mithril": "latest",
-    "bootstrap": "3.x"
-  },
-  "directory": "public/lib"
-}

@@ -5,7 +5,6 @@ var buffer = require('gulp-buffer');
 var uglify = require('gulp-uglify');
 var _if = require('gulp-if');
 var notify = require('gulp-notify');
-var debowerify = require('debowerify');
 
 var args = require('yargs').argv;
 var isProduction = !!args.production;
@@ -19,7 +18,6 @@ module.exports = function () {
     };
     var bundler = browserify();
     bundler.add(_.path.scripts);
-    bundler.transform(debowerify);
     return rebundler(bundler)();
 };
 
@@ -29,7 +27,6 @@ module.exports.watch = function () {
 
     var b = browserify(options);
     b.add(_.path.scripts);
-    b.transform(debowerify);
 
     var bundler = watchify(b);
 

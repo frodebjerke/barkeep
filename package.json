@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app",
-    "postinstall": "bower install | gulp --production"
+    "postinstall": "gulp --production"
   },
   "url": "",
   "engines": {
@@ -12,20 +12,12 @@
     "npm": "1.4.3"
   },
   "dependencies": {
-    "express": "3.x",
-    "express3-handlebars": "latest",
-    "underscore": "latest",
-    "winston": "0.6.x",
-    "express-winston": "~0.2.4",
-    "mysql": "latest",
     "body-parser": "^1.4.3",
-    "mongoose": "latest",
-    "passport": "^0.2.0",
-    "passport-facebook": "^1.0.3",
-    "q": "latest",
-    "bower": "^1.3.11",
+    "bootstrap": "^3.2.0",
     "browserify": "^5.11.1",
-    "debowerify": "^0.8.1",
+    "express": "3.x",
+    "express-winston": "~0.2.4",
+    "express3-handlebars": "latest",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^1.0.0",
     "gulp-buffer": "0.0.2",
@@ -38,8 +30,16 @@
     "gulp-sourcemaps": "^1.1.4",
     "gulp-uglify": "^1.0.1",
     "gulp-watch": "^0.6.9",
+    "mithril": "^0.1.21",
+    "mongoose": "latest",
+    "mysql": "latest",
+    "passport": "^0.2.0",
+    "passport-facebook": "^1.0.3",
+    "q": "latest",
+    "underscore": "latest",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^1.0.2",
+    "winston": "0.6.x",
     "yargs": "^1.3.1"
   }
 }

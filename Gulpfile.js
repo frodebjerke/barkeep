@@ -1,10 +1,12 @@
 var gulp = require('gulp');
 var tasks = require('./gulpscripts');
 
-gulp.task('default', ['less', 'js']);
-gulp.task('watch', ['watch-js', 'watch-less']);
+gulp.task("less", tasks.less);
+gulp.task("watch-less", tasks.less.watch);
 
-Object.keys(tasks).forEach(function (key) {
-    gulp.task('watch-' + key, [key], tasks[key].watch);
-    gulp.task(key, tasks[key]);
-});
+gulp.task("js", tasks.js);
+gulp.task("watch-js", tasks.js.watch);
+
+gulp.task('default', ['less', 'js']);
+
+gulp.task('watch', ['watch-js', 'watch-less']);
