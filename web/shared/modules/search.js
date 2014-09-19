@@ -3,22 +3,19 @@ var m = require('mithril');
 module.exports = function (itemview, doQuery) {
   return {
     controller: function () {
-      var query = m.prop("");
-      var result = m.prop([]);
+      var ctrl = this;
+      this.query = m.prop("");
+      this.result = m.prop([]);
       var timer;
 
-      doQuery(query, result);
+      doQuery(this.query, this.result);
 
-      return {
-        debounce: function (term) {
-            query(term);
-            timer && clearTimeout(timer);
-            timer = setTimeout(function () {
-                doQuery(query, result);
-              }, 300);
-        },
-        query: query,
-        result: result
+      this.debounce = function (term) {
+          ctrl.query(term);
+          timer && clearTimeout(timer);
+          timer = setTimeout(function () {
+            doQuery(ctrl.query, ctrl.result);
+          }, 300);
       };
     },
     view: function (ctrl) {

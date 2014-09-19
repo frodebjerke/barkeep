@@ -10,7 +10,7 @@ m.route.mode = "hash";
 m.route(document.getElementById("barkeep-region"), "/", {
   "/": landing,
   "/addbottle": liquorlist,
-  "/addbottle/newliquor": newliquor,
+  "/addbottle/new": newliquor,
   "/addbottle/:id": addBottle,
   "/pourdrink": bottlelist,
   "/pourdrink/:bottle": pourdrink,
