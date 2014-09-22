@@ -1,0 +1,33 @@
+.el-navigation {
+  width: 0;
+
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.el-navigation {
+  &.active {
+    width: 20%;
+  }
+}
+
+.el-navigation {
+  &.active + .js-page-wrap {
+    width: 80%;
+  }
+}
+
+.el-navigation a {
+  display: block;
+  background-color: @primary;
+}
+
+.js-page-wrap {
+  width: 100%;
+  float: right;
+  transition: width 0.3s ease;
+}

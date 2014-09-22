@@ -1,61 +1,16 @@
 .el-menu {
-  .menu-icon {
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    right: 0;
-    color: @darkfont;
-    border: 1px solid @primary;
-    border-radius: 1000px;
-    width: 2.5em;
-    height: 2.5em;
-    line-height: 2.5em;
-    text-align: center;
-    text-transform: uppercase;
-    background-color: @secondary;
-    cursor: pointer;
+  background-color: @primary;
+}
 
-    &:hover {
-      background-color: darken(@secondary, 10%);
-    }
-  }
+.el-menu button {
+  cursor: pointer;
+  color: @secondary;
+  font-size: 3rem;
+  background-color: @primary;
+  border: none;
+  padding-left: 0;
+}
 
-  .menu-list {
-    visibility: hidden;
-    max-height: 0;
-    transition: 1s ease-out;
-    overflow: hidden;
-    background-color: @secondary;
-    width: 100%;
-    // border-bottom: 0.5em darken(@primary, 10%) solid;
-
-    .menu-item {
-      display: block;
-      width: 100%;
-      link-style: none;
-      color: @darkfont;
-      padding: 1em;
-      text-transform: uppercase;
-      cursor: pointer;
-
-      &:nth-child(even) {
-        background-color: lighten(@primary, 10%);
-      }
-      &:hover {
-        background-color: darken(@primary, 10%);
-      }
-    }
-  }
-
-  &.active {
-    .menu-icon {
-      color: @lightfont;
-      background-color: darken(@secondary, 10%);
-    }
-    .menu-list {
-      transition: 1s ease-in-out;
-      visibility: visible;
-      max-height: 40em; // trivially large
-    }
-  }
+.el-menu a:hover {
+  background-color: darken(@secondary, 10%);
 }
