@@ -1,5 +1,5 @@
 var m = require('mithril');
-var Liquor = require('../../modules/Liquor');
+var Liquor = require('../../models/Liquor');
 var inputView = require('../../shared/views/input');
 var liquorView = require('../../shared/views/liquor');
 module.exports = {

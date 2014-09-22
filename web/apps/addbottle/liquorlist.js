@@ -1,4 +1,4 @@
-var Liquor = require('../../modules/Liquor');
+var Liquor = require('../../models/Liquor');
 var liquorView = require('../../shared/views/liquor');
 var searchModule = require('../../shared/modules/search');
 
@@ -9,7 +9,7 @@ var doQuery = function (term, liquors) {
       _id: "new"
     });
   };
-  
+
   Liquor.getAll(term).then(liquors).then(linkToNewLiquor);
 };
 
