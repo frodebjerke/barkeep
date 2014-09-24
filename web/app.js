@@ -9,8 +9,19 @@ var bottlelist = require('./apps/pourdrink/bottlelist');
 var pourdrink = require('./apps/pourdrink/pourdrink');
 var nav = require('./apps/nav');
 
-var wrap = function () {
-  var content = mixinLayout(menu, landing);
+m.route.mode = "hash";
+m.route(document.getElementById("barkeep-region"), "/", {
+  "/": wrap(landing),
+  "/addbottle": wrap(liquorlist),
+  "/addbottle/new": wrap(newliquor),
+  "/addbottle/:id": wrap(addBottle),
+  "/pourdrink": wrap(bottlelist),
+  "/pourdrink/:bottle": wrap(pourdrink),
+  "/pourdrink/:bottle/:amount": wrap(pourdrink)
+});
+
+function wrap(module) {
+  var content = mixinLayout(menu, module);
 
   return {
     controller: function () {
@@ -24,15 +35,4 @@ var wrap = function () {
       ];
     }
   };
-};
-
-m.route.mode = "hash";
-m.route(document.getElementById("barkeep-region"), "/", {
-  "/": wrap(menu, landing),
-  "/addbottle": liquorlist,
-  "/addbottle/new": newliquor,
-  "/addbottle/:id": addBottle,
-  "/pourdrink": bottlelist,
-  "/pourdrink/:bottle": pourdrink,
-  "/pourdrink/:bottle/:amount": pourdrink
-});
+}
