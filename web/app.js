@@ -20,7 +20,7 @@ var wrap = function () {
     view: function (ctrl) {
       return [
         nav.view(ctrl.nav),
-        m(".js-page-wrap.container-fluid", content.view(ctrl.content))
+        m(".js-page-canvas.js-movable", content.view(ctrl.content))
       ];
     }
   };
