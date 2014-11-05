@@ -1,0 +1,18 @@
+.text-link {
+  text-transform: uppercase;
+  line-height: @lineHeight-base;
+  font-size: @size-navigation;
+  font-family: @font-sans;
+  color: @secondary;
+}
+
+.text-btn {
+  color: @secondary;
+  font-family: @font-sans;
+  font-size: @size-button;
+}
+
+.text-btn:hover,
+.text-link:hover {
+  color: darken(@secondary, @hover-shift);
+}
