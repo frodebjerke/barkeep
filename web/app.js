@@ -8,6 +8,7 @@ var addBottle = require('./apps/addbottle/addbottle');
 var bottlelist = require('./apps/pourdrink/bottlelist');
 var pourdrink = require('./apps/pourdrink/pourdrink');
 var nav = require('./apps/nav');
+var tabs = require('./apps/economics/tabs');
 
 m.route.mode = "hash";
 m.route(document.getElementById("barkeep-region"), "/", {
@@ -17,7 +18,8 @@ m.route(document.getElementById("barkeep-region"), "/", {
   "/addbottle/:id": wrap(addBottle),
   "/pourdrink": wrap(bottlelist),
   "/pourdrink/:bottle": wrap(pourdrink),
-  "/pourdrink/:bottle/:amount": wrap(pourdrink)
+  "/pourdrink/:bottle/:amount": wrap(pourdrink),
+  "/economics": wrap(tabs)
 });
 
 function wrap(module) {

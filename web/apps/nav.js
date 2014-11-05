@@ -32,7 +32,7 @@ var links = m.prop([
   {name: m.prop("New bottle"), url: m.prop("/addbottle"), icon: m.prop("plus")},
   {name: m.prop("Pour drink"), url: m.prop("/pourdrink"), icon: m.prop("glass")},
   {name: m.prop("Your profile"), url: m.prop("/userprofile"), icon: m.prop("user")},
-  {name: m.prop("Statistics"), url: m.prop("/stats"), icon: m.prop("bar-chart-o")}
+  {name: m.prop("Economics"), url: m.prop("/economics"), icon: m.prop("dollar")}
 ]);
 
 module.exports = nav;
