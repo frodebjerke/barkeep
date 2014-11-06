@@ -1,3 +1,4 @@
+require('./lib/mithril/dateprop-ext');
 var m = require('mithril');
 var mixinLayout = require('./lib/mithril/mixin-layout');
 var menu = require('./apps/menu');

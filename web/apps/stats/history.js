@@ -22,7 +22,11 @@ module.exports = {
 };
 
 function historicalEvent(ev) {
-  return m("", ev.type() + " - " + ev.name());
+  var action = ev.type() === "bottle" ? " added a new bottle of " : " poured from ";
+  return m("", [
+    m("span", ev.added.fromNow()),
+    m("span", ev.user() + action + ev.name())
+  ]);
 }
 
 var Event = function (data) {
