@@ -1,9 +1,5 @@
 var m = require('mithril');
 
-var controller = function () {
-
-};
-
 var bottle = function () {
   return m("a", {
     href: "addbottle",
@@ -22,14 +18,9 @@ var drink = function () {
   ]);
 };
 
-var view = function (ctrl) {
+module.exports = function (ctrl) {
   return m(".el-drinkorbottle", [
     bottle(),
     drink()
   ]);
-};
-
-module.exports = {
-  controller: controller,
-  view: view
 };

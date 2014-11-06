@@ -15,18 +15,20 @@ var Bottle = function (data) {
   this.owner_name =  m.prop(data.owner_name);
 };
 
-Bottle.getAll = function () {
+Bottle.getAll = function (data) {
   return m.request({
     method: "GET",
     url: "/api/bottles",
-    type: Bottle
+    type: Bottle,
+    data: data || {}
   });
 };
 
 Bottle.search = function (term) {
   return m.request({
     method: "GET",
-    url: "/search/bottle/"+term()
+    url: "/search/bottle/"+term(),
+    type: Bottle
   });
 };
 
