@@ -59,7 +59,7 @@ function drinkToEvent(drink) {
 
 function orderByDate(events) {
   return _.sortBy(events, function (event) {
-    return event.added();
+    return -event.added();
   });
 }
 
