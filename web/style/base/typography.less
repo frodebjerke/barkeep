@@ -22,3 +22,13 @@
 .text-link:hover {
   color: darken(@secondary, @hover-shift);
 }
+
+.icon {
+  color: @primary;
+  padding: 2rem;
+}
+
+.icon--large {
+  &:extend(.icon);
+  font-size: @size-icon--large;
+}

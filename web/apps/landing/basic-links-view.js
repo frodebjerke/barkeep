@@ -5,7 +5,7 @@ var bottle = function () {
     href: "addbottle",
     config: m.route,
     title: "Add a new bottle to the cabinet"
-  }, m("i.fa.fa-plus"));
+  }, m("i.fa.fa-plus.icon--large"));
 };
 
 var drink = function () {
@@ -14,12 +14,12 @@ var drink = function () {
     config: m.route,
     title: "Pour a drink from a bottle in the cabinet"
   }, [
-    m("i.fa.fa-glass")
+    m("i.fa.fa-glass.icon--large")
   ]);
 };
 
 module.exports = function (ctrl) {
-  return m(".el-drinkorbottle", [
+  return m(".u-centered", [
     bottle(),
     drink()
   ]);
