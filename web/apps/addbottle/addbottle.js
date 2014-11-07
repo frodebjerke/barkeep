@@ -3,6 +3,7 @@ var m = require('mithril');
 var Liquor = require('../../models/Liquor');
 var User = require('../../models/User');
 var Product = require('../../models/Product');
+var Bottle = require('../../models/Bottle');
 
 var inputView = require('../../shared/views/input');
 var liquorView = require('../../shared/views/liquor');
@@ -25,16 +26,8 @@ module.exports = {
     }.bind(this));
 
     this.submit = function () {
-      var data = {
-        liquor: this.liquor(),
-        owner: this.owner(),
-        product: this.product(),
-        sacred: false
-      };
-
-      postBottle(data).then(function () {
-        m.route("/");
-      });
+      Bottle.create(this.liquor(), this.owner(), this.product())
+        .then(m.route.bind(null, "/"));
     }.bind(this);
   },
   view: function (ctrl) {
@@ -56,10 +49,6 @@ var price = function (prop) {
       value: prop()
     })
   ]);
-};
-
-var sortByLogged = function (a, b) {
-  return b.logged - a.logged;
 };
 
 var chooseproduct = function (products, product) {
@@ -88,22 +77,20 @@ var addProduct = function (product) {
   ]);
 };
 
-
-
 var pickowner = function (owner, users) {
   return m(".addbottle-pickowner", [
     m("label","Owner"),
     m(".clearfix"),
     m("ul", [
       m("li.addbottle-owner", {
-        style: "background-image:url('"+profilePicture(owner().id())+"');"
+        style: "background-image:url('"+owner().image()+"');"
       }),
       users().map(function (user) {
         return m("li", {
           onclick: function () {
             owner(user);
           },
-          style: "background-image:url('"+profilePicture(user.id())+"');"
+          style: "background-image:url('"+ user.image()+"');"
         }, m(".addbottle-user", {
         }));
       })
@@ -117,17 +104,8 @@ var submit = function (submit) {
   ]);
 };
 
-var postBottle = function (data) {
-  var xhrConfig = function(xhr) {
-    xhr.setRequestHeader("Content-Type", "application/json");
-  };
-  return m.request({
-    method: "POST",
-    url: "/api/bottles",
-    config: xhrConfig,
-    data: data
-  });
-};
-var profilePicture = function (id) {
-  return "https://graph.facebook.com/"+id+"/picture";
-};
+
+
+function sortByLogged(a, b) {
+  return b.logged - a.logged;
+}

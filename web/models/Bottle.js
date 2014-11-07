@@ -40,4 +40,24 @@ Bottle.search = function (term) {
   });
 };
 
+Bottle.create = function (liquor, owner, product) {
+  var data = {
+    liquor: liquor,
+    owner: owner,
+    product: product,
+    sacred: false
+  };
+
+  var xhrConfig = function(xhr) {
+    xhr.setRequestHeader("Content-Type", "application/json");
+  };
+
+  return m.request({
+    method: "POST",
+    url: "/api/bottles",
+    config: xhrConfig,
+    data: data
+  });
+};
+
 module.exports = Bottle;
