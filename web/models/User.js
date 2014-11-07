@@ -11,6 +11,14 @@ User.prototype.name = function () {
   return this.firstname() + " " + this.lastname();
 };
 
+User.getMe = function () {
+  return m.request({
+    method: "GET",
+    url: "/api/me",
+    type: User
+  });
+};
+
 User.getAll = function () {
   return m.request({
     method: "GET",

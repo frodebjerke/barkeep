@@ -4,10 +4,10 @@ var searchModule = require('../../shared/modules/search');
 
 var doQuery = function (term, liquors) {
   var linkToNewLiquor = function () {
-    liquors().push({
+    liquors().push(new Liquor({
       name: "Add new",
       _id: "new"
-    });
+    }));
   };
 
   Liquor.getAll(term).then(liquors).then(linkToNewLiquor);
