@@ -11,6 +11,7 @@ var pourdrink = require('./apps/pourdrink/pourdrink');
 var nav = require('./apps/nav');
 var economy = require('./apps/stats/economy');
 var history = require('./apps/stats/history');
+var profile = require('./apps/user/profile');
 
 m.route.mode = "hash";
 m.route(document.getElementById("barkeep-region"), "/", {
@@ -22,7 +23,9 @@ m.route(document.getElementById("barkeep-region"), "/", {
   "/pourdrink/:bottle": wrap(pourdrink),
   "/pourdrink/:bottle/:amount": wrap(pourdrink),
   "/economics": wrap(economy),
-  "/history": wrap(history)
+  "/history": wrap(history),
+  "/user": wrap(profile),
+  "/user/:id" : wrap(profile)
 });
 
 function wrap(module) {
