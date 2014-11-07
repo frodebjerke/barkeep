@@ -15,6 +15,14 @@ var Bottle = function (data) {
   this.owner_name =  m.prop(data.owner_name);
 };
 
+Bottle.getById = function (id) {
+  return m.request({
+    method: "GET",
+    url: "api/bottles/" + id,
+    type: Bottle
+  });
+};
+
 Bottle.getAll = function (data) {
   return m.request({
     method: "GET",

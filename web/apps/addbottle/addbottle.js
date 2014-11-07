@@ -2,6 +2,7 @@ var m = require('mithril');
 var Liquor = require('../../models/Liquor');
 var inputView = require('../../shared/views/input');
 var liquorView = require('../../shared/views/liquor');
+
 module.exports = {
   controller: function (liquorid) {
     liquorid = liquorid || m.route.param("id");

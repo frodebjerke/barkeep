@@ -12,7 +12,7 @@ module.exports = function (bottle) {
     m(".el-bottle-size", [
       m(".bottle-amount", {
         style: "height:"+(bottle.volume_ml() / bottle.size_ml()) * 5+ "em;"
-      }, new Number(bottle.volume_ml() / 1000).toPrecision(2))
+      }, Number(bottle.volume_ml() / 1000).toPrecision(2))
     ])
   ]));
 };
