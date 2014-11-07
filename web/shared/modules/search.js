@@ -40,8 +40,8 @@ var searchbar = function (query, debounce) {
 };
 
 var results = function (result, itemview) {
-  return m(".search-results", result().map(function (res) {
-    return m(".search-result.col-xs-12.col-sm-4.col-md-3.col-lg-2",
+  return m(".u-grid", result().map(function (res) {
+    return m(".u-grid--box.col-xs-12.col-sm-4.col-md-3.col-lg-2",
       itemview(res));
   }));
 };

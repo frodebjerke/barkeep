@@ -1,0 +1,19 @@
+.el-item {
+  background-image: url('static/dummy.jpg');
+  height: inherit;
+  background-image: inherit;
+  background: center no-repeat;
+  cursor: pointer;
+
+  .item-info {
+    transition: @transition;
+    background-color: @overlay;
+    &:hover {
+      background-color: @overlay--darker;
+    }
+    width: inherit;
+    height: inherit;
+    padding: 1em;
+    position: relative;
+  }
+}
