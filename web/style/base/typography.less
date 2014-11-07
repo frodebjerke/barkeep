@@ -1,9 +1,22 @@
+h1 {
+  font-family: @font-sans;
+  font-weight: @weight-book;
+}
+
+p {
+  &:extend(.text);
+}
+
+
 .text {
   color: @darkfont;
-  font-size: @size-base;  
+  font-size: @size-base;
+  font-family: @font-serif;
+  font-weight: @weight-book;
 }
 
 .text-title {
+  font-family: @font-sans;
   color: @lightfont;
   text-transform: uppercase;
   padding: 0.2em;
@@ -14,10 +27,10 @@
 }
 
 .text-link {
+  font-family: @font-sans;
   text-transform: uppercase;
   line-height: @lineHeight-base;
   font-size: @size-navigation;
-  font-family: @font-sans;
   color: @secondary;
 }
 
