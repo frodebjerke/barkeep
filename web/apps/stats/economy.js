@@ -15,14 +15,14 @@ module.exports = {
   },
   view: function (ctrl) {
     return m(".el-economy", [
-      ctrl.users().map(userTab),
+      m("section", ctrl.users().map(userTab)),
       overview(ctrl.totals)
     ]);
   }
 };
 
 function userTab(user) {
-  return m(".economy-tab", [
+  return m(".u-line", [
     m("img.image-profile", {src: user.image()}),
     m("", user.name()),
     m("", user.balance() + ",-")

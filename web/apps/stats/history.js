@@ -17,15 +17,18 @@ module.exports = {
       .then(this.history);
    },
   view: function (ctrl) {
-    return m("", ctrl.history().map(historicalEvent));
+    return m("section", [
+      m("h1", "Stream"),
+      ctrl.history().map(historicalEvent)
+    ]);
   }
 };
 
 function historicalEvent(ev) {
   var action = ev.type() === "bottle" ? " added a new bottle of " : " poured from ";
-  return m("", [
-    m("span", ev.added.fromNow()),
-    m("span", ev.user() + action + ev.name())
+  return m(".u-line", [
+    m("", ev.added.fromNow()),
+    m("", ev.user() + action + ev.name())
   ]);
 }
 

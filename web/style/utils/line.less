@@ -1,0 +1,13 @@
+.u-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: @gutter-small;
+
+  &:extend(.u-line);
+  background-color: @secondary;
+  &:nth-child(even) {
+    background-color: @secondary--lighter;
+  }
+}
