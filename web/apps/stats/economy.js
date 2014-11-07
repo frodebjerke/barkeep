@@ -15,7 +15,7 @@ module.exports = {
   },
   view: function (ctrl) {
     return m(".el-economy", [
-      m("section", ctrl.users().map(userTab)),
+      m("", ctrl.users().map(userTab)),
       overview(ctrl.totals)
     ]);
   }
