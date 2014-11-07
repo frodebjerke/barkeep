@@ -26,16 +26,12 @@
 }
 
 .el-navigation a {
+  &:extend(.text-link);
   display: block;
-  color: @secondary;
-  text-transform: uppercase;
-  line-height: 150%;
-  font-size: 2rem;
 }
 
 .el-navigation a:first-child {
-  font-size: 3rem;
-  line-height: 1;
+  &:extend(.text-btn);
   text-align: center;
 }
 

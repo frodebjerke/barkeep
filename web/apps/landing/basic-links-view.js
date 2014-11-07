@@ -1,15 +1,11 @@
 var m = require('mithril');
 
-var controller = function () {
-
-};
-
 var bottle = function () {
   return m("a", {
     href: "addbottle",
     config: m.route,
     title: "Add a new bottle to the cabinet"
-  }, m("i.fa.fa-plus"));
+  }, m("i.fa.fa-plus.icon--large"));
 };
 
 var drink = function () {
@@ -18,18 +14,13 @@ var drink = function () {
     config: m.route,
     title: "Pour a drink from a bottle in the cabinet"
   }, [
-    m("i.fa.fa-glass")
+    m("i.fa.fa-glass.icon--large")
   ]);
 };
 
-var view = function (ctrl) {
-  return m(".el-drinkorbottle", [
+module.exports = function (ctrl) {
+  return m(".u-centered", [
     bottle(),
     drink()
   ]);
-};
-
-module.exports = {
-  controller: controller,
-  view: view
 };

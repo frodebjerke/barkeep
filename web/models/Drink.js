@@ -20,4 +20,20 @@ Drink.getAll = function () {
   });
 };
 
+Drink.create = function (bottle, amount) {
+  var data = {
+    bottle: bottle,
+    amount: amount
+  };
+  var xhrConfig = function (xhr) {
+    xhr.setRequestHeader("Content-Type", "application/json");
+  };
+  return m.request({
+    method: "POST",
+    url: "/api/drinks",
+    config: xhrConfig,
+    data: data
+  });
+};
+
 module.exports = Drink;

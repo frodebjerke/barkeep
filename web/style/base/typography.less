@@ -1,0 +1,38 @@
+.text-title {
+  color: @lightfont;
+  text-transform: uppercase;
+  padding: 0.2em;
+}
+
+.text-subtitle {
+  color: @lightfont--darker;
+}
+
+.text-link {
+  text-transform: uppercase;
+  line-height: @lineHeight-base;
+  font-size: @size-navigation;
+  font-family: @font-sans;
+  color: @secondary;
+}
+
+.text-btn {
+  color: @secondary;
+  font-family: @font-sans;
+  font-size: @size-button;
+}
+
+.text-btn:hover,
+.text-link:hover {
+  color: darken(@secondary, @hover-shift);
+}
+
+.icon {
+  color: @primary;
+  padding: 2rem;
+}
+
+.icon--large {
+  &:extend(.icon);
+  font-size: @size-icon--large;
+}

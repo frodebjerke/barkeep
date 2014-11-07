@@ -15,18 +15,48 @@ var Bottle = function (data) {
   this.owner_name =  m.prop(data.owner_name);
 };
 
-Bottle.getAll = function () {
+Bottle.getById = function (id) {
+  return m.request({
+    method: "GET",
+    url: "api/bottles/" + id,
+    type: Bottle
+  });
+};
+
+Bottle.getAll = function (data) {
   return m.request({
     method: "GET",
     url: "/api/bottles",
-    type: Bottle
+    type: Bottle,
+    data: data || {}
   });
 };
 
 Bottle.search = function (term) {
   return m.request({
     method: "GET",
-    url: "/search/bottle/"+term()
+    url: "/search/bottle/"+term(),
+    type: Bottle
+  });
+};
+
+Bottle.create = function (liquor, owner, product) {
+  var data = {
+    liquor: liquor,
+    owner: owner,
+    product: product,
+    sacred: false
+  };
+
+  var xhrConfig = function(xhr) {
+    xhr.setRequestHeader("Content-Type", "application/json");
+  };
+
+  return m.request({
+    method: "POST",
+    url: "/api/bottles",
+    config: xhrConfig,
+    data: data
   });
 };
 

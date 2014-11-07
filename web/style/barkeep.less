@@ -1,24 +1,30 @@
 @import '../../node_modules/bootstrap/less/bootstrap.less';
-@import 'colors.less';
-@import 'forms.less';
-@import 'transitions.less';
 
-@import 'style.less';
+@import 'lib/overloads.less';
+
+@import 'vars/colors.less';
+@import 'vars/font.less';
+@import 'vars/transitions.less';
+
+@import 'components/button.less';
+@import 'components/link.less';
+
+@import 'utils/centered.less';
+@import 'utils/grid.less';
+
+@import 'base/module';
+@import 'base/property';
+@import 'base/typography';
+@import 'base/theme.less';
 
 
 @import 'el-menu.less';
 @import 'el-navigation.less';
 
+@import 'el-item';
 @import 'el-addbottle.less';
-@import 'el-bottle.less';
+@import 'el-bottle-size.less';
 @import 'el-bottleinfo.less';
-@import 'el-drink.less';
-@import 'el-lastbottles.less';
-@import 'el-lastdrinks.less';
-@import 'el-liquor.less';
 @import 'el-newliquor.less';
-@import 'el-person.less';
 @import 'el-pourdrink.less';
 @import 'el-search.less';
-@import 'el-top.less';
-@import 'el-drinkorbottle.less';

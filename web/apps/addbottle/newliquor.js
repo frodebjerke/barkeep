@@ -13,7 +13,7 @@ module.exports = {
       contents: contentsmodel(),
     };
     liquormodel.submit = function () {
-      postLiquor(liquormodel).then(function (res) {
+      Liquor.create(liquormodel).then(function (res) {
         m.route("/addbottle/"+res.id);
       });
     };
@@ -35,7 +35,7 @@ module.exports = {
 
 var nameview = function (name) {
   return m(".newliquor-name", [
-    inputView("Name", name)
+    inputView("Name", name())
   ]);
 };
 
@@ -165,12 +165,4 @@ var contentsmodel = function (model) {
 
 var subtitle = function (text) {
   return m(".addliquor-subtitle", text);
-};
-
-var postLiquor = function (liquor) {
-  return m.request({
-    method: "POST",
-    url: "/api/liquor",
-    data: liquor
-  });
 };

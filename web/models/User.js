@@ -11,6 +11,18 @@ User.prototype.name = function () {
   return this.firstname() + " " + this.lastname();
 };
 
+User.prototype.image = function () {
+  return "https://graph.facebook.com/"+ this.id() +"/picture";
+}
+
+User.getMe = function () {
+  return m.request({
+    method: "GET",
+    url: "/api/me",
+    type: User
+  });
+};
+
 User.getAll = function () {
   return m.request({
     method: "GET",
