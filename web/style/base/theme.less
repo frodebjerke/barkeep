@@ -1,5 +1,15 @@
+@fbPhotoSize: 50px;
+
 body {
+  &:extend(.text);
   font-family: @font-serif;
   font-weight: @weight-book;
   background-color: @primary--lighter;
+}
+
+.image-profile {
+  width: @fbPhotoSize;
+  height: @fbPhotoSize;
+  border-radius: @fbPhotoSize / 2;
+  margin: @gutter-small;
 }

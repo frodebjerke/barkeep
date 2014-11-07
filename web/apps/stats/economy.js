@@ -9,7 +9,7 @@ module.exports = {
     User.getAll().then(orderByBalanceDesc).then(this.users);
   },
   view: function (ctrl) {
-    return m(".c-economy", [
+    return m(".el-economy", [
       ctrl.users().map(userTab)
     ]);
   }
@@ -17,6 +17,8 @@ module.exports = {
 
 function userTab(user) {
   return m(".economy-tab", [
-    m("span", user.name() + "'s tab is " + user.balance() + ",-")
+    m("img.image-profile", {src: user.image()}),
+    m("", user.name()),
+    m("", user.balance() + ",-")
   ]);
 }
