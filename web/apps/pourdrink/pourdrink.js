@@ -2,6 +2,7 @@ var m = require('mithril');
 var Bottle = require('../../models/Bottle');
 var Drink = require('../../models/Drink');
 var bottleView = require('../../shared/views/bottle');
+var inputView = require('../../shared/views/input');
 
 module.exports = {
   controller: function (bottleid) {
@@ -27,11 +28,7 @@ module.exports = {
 
 var amount = function (amount) {
   return m(".pourdrink-amount", [
-    m("label", "How much (ml) ?"),
-    m("input", {
-      onchange: m.withAttr("value", amount),
-      value: amount()
-    })
+    inputView("How much (ml) ?", amount)
   ]);
 };
 

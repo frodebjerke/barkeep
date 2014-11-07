@@ -29,7 +29,7 @@ module.exports = function (itemview, doQuery) {
 
 var searchbar = function (query, debounce) {
   return m(".search-bar", [
-    m("input.col-xs-11.col-md-8", {
+    m("input", {
       autofocus: "autofocus",
       placeholder: "Search ...",
       onkeyup: m.withAttr("value", debounce),

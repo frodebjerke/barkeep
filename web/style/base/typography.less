@@ -28,11 +28,17 @@
 }
 
 .icon {
-  color: @primary;
-  padding: 2rem;
+  color: @darkfont;
+  font-size: @size-icon;
+  cursor: pointer;
+  transition: @transition;
+  padding: 0.5rem;
+}
+
+.icon:hover {
+  color: @darkfont--darker;
 }
 
 .icon--large {
-  &:extend(.icon);
   font-size: @size-icon--large;
 }

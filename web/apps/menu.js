@@ -15,7 +15,7 @@ module.exports = {
     },[
       m("button", {
         onclick: ctrl.toggleMenu
-      }, m("i.fa.fa-bars"))
+      }, m("i.fa.fa-bars.icon"))
     ]);
   }
 };

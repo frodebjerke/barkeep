@@ -35,7 +35,7 @@ module.exports = {
 
 var nameview = function (name) {
   return m(".newliquor-name", [
-    inputView("Name", name())
+    inputView("Name", name)
   ]);
 };
 

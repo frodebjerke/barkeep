@@ -5,7 +5,7 @@ var bottle = function () {
     href: "addbottle",
     config: m.route,
     title: "Add a new bottle to the cabinet"
-  }, m("i.fa.fa-plus.icon--large"));
+  }, m("i.fa.fa-plus.icon.icon--large"));
 };
 
 var drink = function () {
@@ -14,7 +14,7 @@ var drink = function () {
     config: m.route,
     title: "Pour a drink from a bottle in the cabinet"
   }, [
-    m("i.fa.fa-glass.icon--large")
+    m("i.fa.fa-glass.icon.icon--large")
   ]);
 };
 

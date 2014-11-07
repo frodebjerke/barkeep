@@ -1,6 +1,8 @@
 @diff: 20%;
 
 @primary: rgba(100, 100, 100, 1);
+@primary--lighter: lighten(@primary, @diff);
+
 @secondary: rgba(200,200,200, 1);
 
 @overlay: rgba(50, 50, 50, 0.5);
@@ -28,3 +30,4 @@
 @lightfont: rgba(240, 240, 240, 1);
 @lightfont--darker: darken(@lightfont, @diff);
 @darkfont: rgba(60, 60, 60, 1);
+@darkfont--darker: darken(@darkfont, @diff);

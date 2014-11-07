@@ -7,6 +7,7 @@ module.exports = function (label, prop, type) {
       onchange: m.withAttr("value", prop),
       type: type || typeof(prop()),
       value: prop()
-    })
+    }),
+    m(".clearfix")
   ]);
 };
