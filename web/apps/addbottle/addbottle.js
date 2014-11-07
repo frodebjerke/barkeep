@@ -15,7 +15,7 @@ module.exports = {
     this.owner = m.prop({});
     this.users = m.prop([]);
     this.liquor = m.prop({});
-    this.product = m.prop({});
+    this.product = m.prop(Product.default());
 
     User.getMe().then(this.owner);
     User.getAll().then(this.users);

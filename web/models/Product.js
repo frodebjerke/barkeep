@@ -11,4 +11,13 @@ Product.ctor = function (data) {
   return new Product(data);
 };
 
+Product.default = function () {
+  return Product.ctor({
+    price: 0,
+    size_ml: 0,
+    units: 1,
+    material: "bottle"
+  });
+};
+
 module.exports = Product;

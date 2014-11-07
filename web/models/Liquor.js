@@ -1,7 +1,10 @@
 var m = require('mithril');
+var _ = require('lodash');
 var Product = require('./Product');
 
 var Liquor = function (data) {
+  if (!_.isArray(data.products)) data.products = [];
+
   this._id = m.prop(data._id);
   this.name = m.prop(data.name);
   this.updated_at = m.prop(data.updated_at);
@@ -26,6 +29,15 @@ Liquor.getAll = function (term) {
   return m.request({
     method: "GET",
     url: "/search/liquor/"+ term(),
+    type: Liquor
+  });
+};
+
+Liquor.create = function (data) {
+  return m.request({
+    method: "POST",
+    url: "/api/liquor",
+    data: data,
     type: Liquor
   });
 };
