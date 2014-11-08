@@ -41,7 +41,7 @@ var searchbar = function (query, debounce) {
 
 var results = function (result, itemview) {
   return m(".u-grid", result().map(function (res) {
-    return m(".u-grid--box.col-xs-12.col-sm-4.col-md-3.col-lg-2",
+    return m(".u-grid--box.col-xs-12.col-sm-6.col-md-4.col-lg-3",
       itemview(res));
   }));
 };

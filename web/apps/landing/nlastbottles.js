@@ -11,7 +11,7 @@ module.exports = {
     return m(".u-grid", [
       ctrl.bottles().map(function (bottle) {
         return [
-          m(".u-grid--box.col-xs-12.col-sm-4.col-md-3.col-lg-2", [
+          m(".u-grid--box.col-xs-12.col-sm-6.col-md-4.col-lg-3", [
             bottleView(bottle)
           ])
         ];
