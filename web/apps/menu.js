@@ -10,12 +10,24 @@ module.exports = {
     };
   },
   view: function (ctrl) {
-    return m("header.el-menu", {
+    return m("header.el-menu.u-line", {
       class: ctrl.active() ? "active" : ""
     },[
-      m("button", {
+      m("button.u-icon", {
         onclick: ctrl.toggleMenu
-      }, m("i.fa.fa-bars.icon"))
+      }, m("i.fa.fa-bars")),
+      bottle()
     ]);
   }
+};
+
+
+var bottle = function () {
+  return m("a.u-icon", {
+    href: "addbottle",
+    config: m.route,
+    title: "Add a new bottle to the cabinet"
+  }, [
+    m("i.fa.fa-plus"),
+  ]);
 };

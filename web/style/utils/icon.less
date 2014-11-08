@@ -1,0 +1,23 @@
+
+.u-icon {
+  &:extend(.u-line);
+  display: inline-block;
+  transition: @transition;
+  cursor: pointer;
+  color: @lightfont--darker;
+  padding: @gutter-small;
+  background-color: @dark;
+
+  i {
+    font-size: @size-icon;
+    padding: @gutter-small;
+  }
+
+  &.large i {
+    font-size: @size-icon--large
+  }
+
+  &:hover  {
+    color: @darkfont;
+  }
+}
