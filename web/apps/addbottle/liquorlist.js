@@ -1,6 +1,6 @@
 var Liquor = require('../../models/Liquor');
 var liquorView = require('../../shared/views/liquor');
-var searchModule = require('../../shared/modules/search');
+var searchModule = require('./liquor-search');
 
 var doQuery = function (term, liquors) {
   var linkToNewLiquor = function () {
