@@ -14,7 +14,7 @@ module.exports = {
       .then(this.totals);
   },
   view: function (ctrl) {
-    return m(".el-economy", [
+    return m("", [
       m("", ctrl.users().map(userTab)),
       overview(ctrl.totals)
     ]);
@@ -32,8 +32,8 @@ function userTab(user) {
 function overview(totals) {
     return m("section", [
       m("h1", "Overview"),
-      m(".economy-overview", [
-        m("", [
+      m(".u-grid-flex", [
+        m(".u-grid-flex--box", [
           m(".text-title", "Total value"),
           m("", totals().totalValue() + ",-")
         ])
