@@ -37,11 +37,11 @@ module.exports = {
             m(".text-title", "# bottles"),
             m("", ctrl.bottles().length)
           ])
-        ]),
-        ctrl.bottles().map(function (bottle) {
-          return m(".u-grid--box.col-xs-12.col-sm-4.col-md-3.col-lg-2", bottleView(bottle));
-        })
-      ])
+        ])
+      ]),
+      ctrl.bottles().map(function (bottle) {
+        return m(".u-grid--box.col-xs-12.col-sm-4.col-md-3.col-lg-2", bottleView(bottle));
+      })
     ]);
   }
 };
