@@ -1,11 +1,11 @@
 var passport = require('passport');
 
 module.exports = function (app) {
-  var homeCtrl = require('../app/controllers/home');
-  var bottleCtrl = require('../app/controllers/bottle');
-  var userCtrl = require('../app/controllers/user');
-  var drinkCtrl = require('../app/controllers/drink');
-  var liquorCtrl = require('../app/controllers/liquor');
+  var homeCtrl = require('../lib/controllers/home');
+  var bottleCtrl = require('../lib/controllers/bottle');
+  var userCtrl = require('../lib/controllers/user');
+  var drinkCtrl = require('../lib/controllers/drink');
+  var liquorCtrl = require('../lib/controllers/liquor');
 
   app.get("/", ensureAuthenticated, homeCtrl.index);
   app.get("/landing", homeCtrl.index);

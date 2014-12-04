@@ -6,7 +6,6 @@ var landing = require('./apps/landing/landing');
 var liquorlist = require('./apps/addbottle/liquorlist');
 var newliquor = require('./apps/addbottle/newliquor');
 var addBottle = require('./apps/addbottle/addbottle');
-var bottlelist = require('./apps/pourdrink/bottlelist');
 var pourdrink = require('./apps/pourdrink/pourdrink');
 var nav = require('./apps/nav');
 var economy = require('./apps/stats/economy');
@@ -19,7 +18,6 @@ m.route(document.getElementById("barkeep-region"), "/", {
   "/addbottle": wrap(liquorlist),
   "/addbottle/new": wrap(newliquor),
   "/addbottle/:id": wrap(addBottle),
-  "/pourdrink": wrap(bottlelist),
   "/pourdrink/:bottle": wrap(pourdrink),
   "/pourdrink/:bottle/:amount": wrap(pourdrink),
   "/economics": wrap(economy),

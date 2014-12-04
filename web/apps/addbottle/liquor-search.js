@@ -20,6 +20,9 @@ module.exports = function (itemview, doQuery) {
     },
     view: function (ctrl) {
       return m('.el-search', [
+        m("section", [
+          m("h1", "Find and add bottle to cabinet")
+        ]),
         searchbar(ctrl.query, ctrl.debounce),
         results(ctrl.result, itemview)
       ]);
