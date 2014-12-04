@@ -10,7 +10,7 @@ var passport = require('passport');
 mongoconf.connectToMongo();
 
 
-var modelsPath = __dirname + '/app/models';
+var modelsPath = __dirname + '/lib/models';
 fs.readdirSync(modelsPath).forEach(function (file) {
   if (file.indexOf('.js') >= 0) {
     require(modelsPath + '/' + file);
@@ -24,18 +24,14 @@ app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded());
 app.engine('.hbs', exphbs({extname: ".hbs"}));
 app.set('view engine', '.hbs');
-app.set('views', config.root + '/app/views');
+app.set('views', config.root + '/lib/views');
 
 app.use(express.session({ secret: 'keyboard cat' }));
 
 app.use(passport.initialize());
 app.use(passport.session());
-// Configuration
-app.configure( function() {
-});
 
-
-require('./config/authentication');
+require('./lib/authentication');
 require('./config/routes.js')(app);
 
 app.listen(process.env.NODE_ENV || process.env.PORT || 3000);
