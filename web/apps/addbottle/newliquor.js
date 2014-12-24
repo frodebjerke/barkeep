@@ -1,6 +1,7 @@
 var m = require('mithril');
 var inputView = require('../../shared/views/input');
 var datalist = require('../../shared/views/datalist');
+var Liquor = require('../../models/Liquor');
 
 module.exports = {
   controller: function () {

@@ -37,8 +37,7 @@ Liquor.create = function (data) {
   return m.request({
     method: "POST",
     url: "/api/liquor",
-    data: data,
-    type: Liquor
+    data: data
   });
 };
 
